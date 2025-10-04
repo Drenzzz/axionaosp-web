@@ -28,3 +28,6 @@ pnpm-debug.log*
 .vscode/
 .vscode-test/
 .history/
+
+# Server build output
+server/build/
