@@ -103,6 +103,35 @@ const app = new Elysia()
           return teamMembers.map(m => ({ ...m, avatar_url: `https://github.com/${m.username}.png` }));
         }
       })
+      .get('/devices/:codename', async ({ params, query }) => {
+        const { codename } = params;
+        const supportGroup = query.support_group;
+
+        const baseUrl = 'https://raw.githubusercontent.com/AxionAOSP/official_devices/main/OTA';
+
+        try {
+          // Ambil semua data secara paralel
+          const [gmsRes, vanillaRes, changelogRes] = await Promise.all([
+            fetch(`${baseUrl}/GMS/${codename}.json`),
+            fetch(`${baseUrl}/VANILLA/${codename}.json`),
+            fetch(`${baseUrl}/CHANGELOG/${codename}.txt`)
+          ]);
+
+          const gmsData = gmsRes.ok ? await gmsRes.json() : null;
+          const vanillaData = vanillaRes.ok ? await vanillaRes.json() : null;
+          const changelogData = changelogRes.ok ? await changelogRes.text() : null;
+
+          return {
+            gms: gmsData?.response[0] || null,
+            vanilla: vanillaData?.response[0] || null,
+            changelog: changelogData,
+            support_group: supportGroup || null
+          };
+        } catch (error) {
+          console.error(`Error fetching details for ${codename}:`, error);
+          return new Response('Internal server error', { status: 500 });
+        }
+      })
 
   );
 

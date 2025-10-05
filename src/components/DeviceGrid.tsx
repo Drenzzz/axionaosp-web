@@ -10,6 +10,7 @@ interface Device {
   codename: string;
   maintainer: string;
   image_url: string;
+  support_group: string;
 }
 
 // Fetch devices from API
@@ -53,7 +54,7 @@ const getDeviceBrand = (deviceName: string): string => {
 interface DeviceGridProps {
   activeFilter: string;
   searchQuery: string;
-  onDeviceSelect: (codename: string) => void;
+  onDeviceSelect: (device: any) => void;
 }
 
 export function DeviceGrid({ activeFilter, searchQuery, onDeviceSelect}: DeviceGridProps) {
@@ -125,7 +126,13 @@ export function DeviceGrid({ activeFilter, searchQuery, onDeviceSelect}: DeviceG
               codename={device.codename}
               maintainer={device.maintainer}
               imageUrl={device.image_url}
-              onClick={() => onDeviceSelect(device.codename)}
+              onClick={() => onDeviceSelect({
+                codename: device.codename,
+                name: device.device_name,
+                maintainer: device.maintainer,
+                imageUrl: device.image_url,
+                supportGroup: device.support_group
+              })}
             />
           </motion.div>
         ))
