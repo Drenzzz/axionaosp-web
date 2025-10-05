@@ -4,6 +4,18 @@ import { cors } from '@elysiajs/cors';
 
 const isProduction = process.env.NODE_ENV === 'production';
 
+const teamMembers = [
+    { username: 'rmp22', group: 'Core', position: 'Project Founder/Developer' },
+    { username: 'Saikrishna1504', group: 'Management', position: 'Project Manager' },
+    { username: 'manidweep', group: 'Management', position: 'Project Administrator' },
+    { username: 'rmuxnet', group: 'Contributors', position: 'AxionAOSP Channel/Chat Bot' },
+    { username: 'not-ayan', group: 'Contributors', position: 'Designer' },
+    { username: 'alecxtra', group: 'Contributors', position: 'Designer' },
+];
+
+let cachedTeamData: any[] | null = null;
+let lastFetchTime: number = 0;
+
 const app = new Elysia()
   .use(cors())
   .group('/api', (app) =>
@@ -66,6 +78,32 @@ const app = new Elysia()
           return new Response('Internal server error', { status: 500 });
         }
       })
+      .get('/team', async () => {
+        const now = Date.now();
+        if (cachedTeamData && now - lastFetchTime < 3600000) {
+          return cachedTeamData;
+        }
+
+        try {
+          const teamWithAvatars = await Promise.all(
+            teamMembers.map(async (member) => {
+              const res = await fetch(`https://api.github.com/users/${member.username}`);
+              if (!res.ok) return { ...member, avatar_url: `https://github.com/${member.username}.png` };
+              const userData = await res.json();
+              return { ...member, avatar_url: userData.avatar_url };
+            })
+          );
+          
+          cachedTeamData = teamWithAvatars;
+          lastFetchTime = now;
+          return teamWithAvatars;
+
+        } catch (error) {
+          console.error("Error fetching team data:", error);
+          return teamMembers.map(m => ({ ...m, avatar_url: `https://github.com/${m.username}.png` }));
+        }
+      })
+
   );
 
 if (isProduction) {
