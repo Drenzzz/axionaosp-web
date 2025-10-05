@@ -131,3 +131,15 @@
     '75%, 100%': { transform: 'translateY(-6.0em)' }
   }
 }
+
+.mobile-menu-sheet {
+  @apply bg-neutral-900/80 backdrop-blur-xl border-neutral-700 text-white;
+}
+
+[data-state=open].mobile-menu-sheet {
+  @apply animate-in slide-in-from-right-full;
+}
+
+[data-state=closed].mobile-menu-sheet {
+  @apply animate-out slide-out-to-right-full;
+}
