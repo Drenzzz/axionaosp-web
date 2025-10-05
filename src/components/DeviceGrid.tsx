@@ -35,9 +35,10 @@ const getDeviceBrand = (deviceName: string): string => {
 interface DeviceGridProps {
   activeFilter: string;
   searchQuery: string;
+  onDeviceSelect: (codename: string) => void;
 }
 
-export function DeviceGrid({ activeFilter, searchQuery }: DeviceGridProps) {
+export function DeviceGrid({ activeFilter, searchQuery, onDeviceSelect}: DeviceGridProps) {
   const { data: devices, isLoading, isError } = useQuery({
     queryKey: ["devices"],
     queryFn: fetchDevices,
@@ -83,6 +84,7 @@ export function DeviceGrid({ activeFilter, searchQuery }: DeviceGridProps) {
             codename={device.codename}
             maintainer={device.maintainer}
             imageUrl={device.image_url}
+            onClick={() => onDeviceSelect(device.codename)}
           />
         ))
       ) : (
