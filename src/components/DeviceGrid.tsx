@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { useMemo } from "react";
 import { DeviceCard } from "./DeviceCard";
 import { Skeleton } from "./ui/skeleton";
+import { motion } from "framer-motion";
 
 // Define the Device interface
 interface Device {
@@ -31,6 +32,23 @@ const getDeviceBrand = (deviceName: string): string => {
   return "Other";
 }
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+    },
+  };
 
 interface DeviceGridProps {
   activeFilter: string;
@@ -60,6 +78,24 @@ export function DeviceGrid({ activeFilter, searchQuery, onDeviceSelect}: DeviceG
     });
   }, [devices, activeFilter, searchQuery]);
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+    },
+  };
+
   if (isLoading) {
     return (
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 max-w-6xl mx-auto">
@@ -75,21 +111,27 @@ export function DeviceGrid({ activeFilter, searchQuery, onDeviceSelect}: DeviceG
   }
 
   return (
-    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 max-w-6xl mx-auto">
+    <motion.div
+      variants={containerVariants}
+      initial="hidden"
+      animate="visible"
+      className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto"
+    >
       {filteredDevices.length > 0 ? (
         filteredDevices.map((device) => (
-          <DeviceCard
-            key={device.codename}
-            deviceName={device.device_name}
-            codename={device.codename}
-            maintainer={device.maintainer}
-            imageUrl={device.image_url}
-            onClick={() => onDeviceSelect(device.codename)}
-          />
+          <motion.div key={device.codename} variants={itemVariants}>
+            <DeviceCard
+              deviceName={device.device_name}
+              codename={device.codename}
+              maintainer={device.maintainer}
+              imageUrl={device.image_url}
+              onClick={() => onDeviceSelect(device.codename)}
+            />
+          </motion.div>
         ))
       ) : (
         <p className="col-span-full text-center text-neutral-400">No devices found.</p>
       )}
-    </div>
+    </motion.div>
   );
 }

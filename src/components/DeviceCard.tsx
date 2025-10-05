@@ -1,39 +1,40 @@
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "./ui/button";
+import { ArrowRight } from "lucide-react";
 
 interface DeviceCardProps {
   imageUrl: string;
   deviceName: string;
   codename: string;
   maintainer: string;
-  onClick?: () => void;
+  onClick: () => void;
 }
 
 export function DeviceCard({ imageUrl, deviceName, codename, maintainer, onClick }: DeviceCardProps) {
   return (
-    <button onClick={onClick} className="w-full text-left">
-    <Card className="bg-neutral-800 border-neutral-700 overflow-hidden hover:border-green-400 transition-colors">
-      <CardHeader className="flex flex-row items-center gap-4 p-4">
-        <img
-          src={imageUrl}
-          alt={deviceName}
-          className="h-24 w-auto object-contain"
-        />
-        <div className="flex-grow">
-          <CardTitle className="text-lg">{deviceName}</CardTitle>
-          <CardDescription>
-            {codename} by <span className="font-semibold text-green-300">{maintainer}</span>
-          </CardDescription>
-        </div>
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m9 18 6-6-6-6"/></svg>
-      </CardHeader>
-    </Card>
+    <button onClick={onClick} className="group w-full text-left rounded-2xl">
+      <Card className="bg-neutral-800/50 border-neutral-700/80 rounded-2xl h-full flex flex-col transition-all duration-300 group-hover:border-green-400/80 group-hover:scale-[1.02] group-hover:bg-neutral-800">
+        <CardHeader className="p-0 overflow-hidden aspect-[4/3]">
+          <img
+            src={imageUrl}
+            alt={deviceName}
+            className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+          />
+        </CardHeader>
+        <CardContent className="p-6 flex-grow">
+          <CardTitle className="text-xl font-bold">{deviceName}</CardTitle>
+          <p className="text-sm text-neutral-400 font-mono">{codename}</p>
+          <p className="text-sm text-neutral-300 mt-2">
+            Maintained by <span className="font-semibold text-green-300">{maintainer}</span>
+          </p>
+        </CardContent>
+        <CardFooter className="p-6 pt-0">
+          <div className="w-full text-green-300 flex items-center justify-end text-sm font-semibold">
+            View Builds
+            <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+          </div>
+        </CardFooter>
+      </Card>
     </button>
   );
 }

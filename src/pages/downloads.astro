@@ -5,17 +5,16 @@ import { DownloadsContent } from '@/components/DownloadsContent';
 
 <Layout title="AxionAOSP - Downloads">
   <section class="pt-28 pb-16 min-h-screen">
-    <div class="container mx-auto px-4">
-      <div class="text-center mb-12">
-        <h1 class="text-5xl md:text-6xl font-bold tracking-tighter">
-          Experience the
-          <br />
-          <span class="text-green-300">Revolution.</span>
+    <div class="container mx-auto px-4 relative z-10">
+      <div class="text-center mb-12 max-w-2xl mx-auto">
+        <h1 class="text-4xl md:text-5xl font-bold tracking-tight">
+          Find AxionOS for Your Device
         </h1>
+        <p class="text-lg text-neutral-400 mt-4">
+          Begin your journey with a cleaner, faster Android experience. Stable and secure builds for a wide range of devices.
+        </p>
       </div>
-      
       <DownloadsContent client:load />
-
     </div>
   </section>
 </Layout>
