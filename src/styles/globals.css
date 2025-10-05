@@ -126,10 +126,6 @@
     '30%, 40%': { transform: 'translateY(-2.4em)' },
     '45%, 55%': { transform: 'translateY(-3.6em)' },
     '60%, 70%': { transform: 'translateY(-4.8em)' },
-    '75%, 100%': { transform: 'translateY(-6.0em)' } /* Kembali ke awal untuk loop */
-  }
-
-  animation: {
-    roll: 'roll 12s cubic-bezier(0.68, -0.55, 0.27, 1.55) infinite',
+    '75%, 100%': { transform: 'translateY(-6.0em)' }
   }
 }
