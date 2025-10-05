@@ -1,0 +1,44 @@
+---
+import { Navbar } from '@/components/Navbar';
+import { Footer } from '@/components/Footer';
+import '@/styles/globals.css';
+
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="AxionAOSP - Make your android better" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/x-icon" href="/img/favicon.ico" />
+    <title>{title}</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Space+Grotesk:wght@500&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="bg-neutral-900 text-white">
+    <Navbar client:load />
+    <main>
+      <slot />
+    </main>
+    <Footer client:load />
+    <style is:global>
+      body {
+        font-family: 'Google Sans', sans-serif;
+      }
+      h1, h2, h3, .logo-font {
+        font-family: 'Space Grotesk', sans-serif;
+      }
+    </style>
+  </body>
+</html>
