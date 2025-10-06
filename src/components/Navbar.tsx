@@ -18,11 +18,13 @@ export function Navbar() {
   const [isChangelogOpen, setIsChangelogOpen] = useState(false);
 
   return (
-    <QueryClientProvider client={queryClient}> 
-      <header className="fixed top-5 left-1/2 -translate-x-1/2 w-[calc(100%-40px)] max-w-4xl mx-auto bg-neutral-800/80 backdrop-blur-sm rounded-2xl flex justify-between items-center p-3 z-50 border border-neutral-700/80">
-        <a href="/" className="text-xl font-medium text-green-300 pl-2 logo-font">
-          AxionOS
-        </a>
+    <QueryClientProvider client={queryClient}>
+      <header className="fixed top-0 left-0 right-0 z-50">
+        <div className="container mx-auto px-4">
+          <div className="mt-5 bg-neutral-800/80 backdrop-blur-sm rounded-2xl flex justify-between items-center p-3 border border-neutral-700/80">
+          <a href="/" className="text-xl font-medium text-green-300 pl-2 logo-font">
+            AxionOS
+          </a>
         
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center space-x-6">
@@ -70,6 +72,8 @@ export function Navbar() {
             </SheetContent>
           </Sheet>
         </div>
+        </div>
+      </div>
       </header>
       
       <ChangelogModal isOpen={isChangelogOpen} setIsOpen={setIsChangelogOpen} />

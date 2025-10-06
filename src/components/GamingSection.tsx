@@ -4,7 +4,7 @@ export function GamingSection() {
   return (
     <ScrollAnimation>
       <section className="py-20 px-4 text-center">
-        <div className="container mx-auto max-w-3xl">
+        <div className="container mx-auto max-w-3xl px-4">
           <div className="mb-8 border-8 border-black rounded-3xl shadow-lg inline-block">
             {/* Letakkan video gameplay.webm di public/videos/ */}
             <video autoPlay muted loop playsInline className="rounded-2xl">

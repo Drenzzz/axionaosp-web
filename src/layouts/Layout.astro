@@ -31,11 +31,14 @@ const { title } = Astro.props;
   </head>
   <body class="bg-neutral-900 text-white">
     <ParticlesBackground client:load />
-    <Navbar client:load />
-    <main>
-      <slot />
-    </main>
-    <Footer client:load />
+
+    <div class="relative z-10">
+      <Navbar client:load />
+      <main>
+        <slot />
+      </main>
+      <Footer client:load />
+    </div>
     <style is:global>
       body {
         font-family: 'Google Sans', sans-serif;

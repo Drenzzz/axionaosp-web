@@ -3,8 +3,8 @@ import { ScrollAnimation } from './ScrollAnimation';
 export function SecondLifeSection() {
   return (
     <ScrollAnimation>
-      <section className="py-20 px-4 bg-black">
-        <div className="container mx-auto flex flex-col md:flex-row-reverse items-center gap-8 max-w-5xl">
+      <section className="py-20 relative">
+        <div className="container mx-auto px-12 flex flex-col md:flex-row-reverse items-center gap-8">
           <div className="md:w-1/2 text-left">
             <h2 className="text-4xl md:text-5xl font-bold tracking-tighter mb-4">
               Give your old android

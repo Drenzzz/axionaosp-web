@@ -2,26 +2,17 @@ import { Button } from "./ui/button";
 
 export function HeroSection() {
   const animatedWords = ["better.", "faster.", "powerful.", "reliable.", "axion."];
-
   return (
-    <section className="relative h-screen flex items-center justify-center overflow-hidden bg-neutral-900">
-      <video
-        autoPlay
-        muted
-        loop
-        playsInline
-        className="absolute top-0 left-0 w-full h-full object-cover z-0 filter blur-2xl opacity-40"
-      >
-        <source
-          src="https://www.quantamagazine.org/wp-content/uploads/2020/03/Axion_Lede_1300wide.mp4"
-          type="video/mp4"
-        />
+    <section className="relative h-screen w-full flex items-center justify-center overflow-hidden">
+      <video autoPlay muted loop playsInline className="absolute top-0 left-0 w-full h-full object-cover z-0 filter blur-xl opacity-40">
+        <source src="https://www.quantamagazine.org/wp-content/uploads/2020/03/Axion_Lede_1300wide.mp4" type="video/mp4" />
       </video>
+      <div className="absolute top-0 left-0 w-full h-full bg-black/30 z-0"></div>
 
-      <div className="relative z-10 container mx-auto px-4">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-8 md:gap-16">
-          
-          <div className="md:w-auto text-center md:text-left">
+      <div className="relative z-10 container mx-auto px-12">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-8">
+
+          <div className="md:w-1/2 text-center md:text-left">
             <h1 className="text-5xl md:text-7xl font-bold tracking-tighter">
               Make your android
               <br />

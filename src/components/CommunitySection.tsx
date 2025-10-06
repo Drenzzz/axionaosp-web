@@ -10,8 +10,8 @@ const testimonials = [
 
 export function CommunitySection() {
   return (
-    <section id="community" className="py-20 px-4 bg-black">
-      <div className="max-w-4xl mx-auto text-center">
+    <section id="community" className="py-20 ">
+      <div className="container mx-auto px-4 text-center">
         <h2 className="text-4xl font-bold text-green-300 mb-4">Make your android better.</h2>
         <p className="text-neutral-300 mb-8">Join everyone who has downloaded AxionOS. Join the performance revolution.</p>
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-10">
@@ -26,12 +26,12 @@ export function CommunitySection() {
             </Card>
           ))}
         </div>
-        <div className="space-x-4">
-          <Button size="lg" variant="secondary">Join us on Telegram</Button>
-          <a href="/downloads">
-            <Button size="lg" className="bg-green-300 hover:bg-green-400 text-black font-bold">Download AxionOS</Button>
-          </a>
-        </div>
+          <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
+            <Button size="lg" variant="secondary">Join us on Telegram</Button>
+            <a href="/downloads">
+              <Button size="lg" className="bg-green-300 hover:bg-green-400 text-black font-bold">Download AxionOS</Button>
+            </a>
+          </div>
       </div>
     </section>
   )
