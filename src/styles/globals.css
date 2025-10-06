@@ -168,3 +168,25 @@
   .animate-roll {
     animation: roll 16s cubic-bezier(0.25, 0.1, 0.25, 1) infinite;
   }
+
+.prose-axion h1,
+.prose-axion h2,
+.prose-axion h3,
+.prose-axion h4 {
+  @apply text-green-300;
+  margin-top: 24px !important;
+  margin-bottom: 12px !important;
+}
+
+.prose-axion > div > *:first-child {
+  margin-top: 0 !important;
+}
+
+.prose-axion p > strong {
+  @apply text-white;
+}
+
+.prose-axion ul > li::marker {
+  @apply text-green-400;
+}
+  
