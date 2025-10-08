@@ -203,3 +203,42 @@
   transform: translateY(-5px);
   box-shadow: 0 0 15px 5px rgba(74, 222, 128, 0.2);
 }
+
+.has-hover:hover .group:not(:hover) {
+  opacity: 0.5;
+}
+
+@keyframes aurora-move {
+  0% { transform: translate(-50%, -50%) rotate(0deg); }
+  25% { transform: translate(-40%, -60%) rotate(90deg); }
+  50% { transform: translate(-50%, -50%) rotate(180deg); }
+  75% { transform: translate(-60%, -40%) rotate(270deg); }
+  100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+.aurora-background::before,
+.aurora-background::after {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  filter: blur(100px);
+  opacity: 0.15;
+}
+
+.aurora-background::before {
+  width: 400px;
+  height: 400px;
+  top: 20%;
+  left: 30%;
+  background-image: radial-gradient(circle, #4ade80, transparent 60%);
+  animation: aurora-move 30s infinite linear;
+}
+
+.aurora-background::after {
+  width: 500px;
+  height: 500px;
+  top: 70%;
+  left: 70%;
+  background-image: radial-gradient(circle, #818cf8, transparent 60%);
+  animation: aurora-move 45s infinite linear reverse;
+}
