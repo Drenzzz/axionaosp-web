@@ -139,13 +139,13 @@ if (isProduction) {
   app
     .use(
       staticPlugin({
-        assets: '../dist',
+        assets: '../frontend/dist',
         prefix: '',
       })
     )
     .get('/*', ({ set }) => {
       set.headers['Content-Type'] = 'text/html';
-      return Bun.file('../dist/index.html');
+      return Bun.file('../frontend/dist/index.html');
     });
 }
 

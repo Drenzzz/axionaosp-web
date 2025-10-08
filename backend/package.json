@@ -1,11 +1,12 @@
 {
-  "name": "server",
+  "name": "backend",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "bun --watch index.ts"
+    "dev": "bun --watch index.ts",
+    "build": "bun build index.ts --outdir ./build",
+    "start": "cross-env NODE_ENV=production bun run ./build/index.js"
   },
   "keywords": [],
   "author": "",
