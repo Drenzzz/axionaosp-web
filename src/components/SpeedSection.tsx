@@ -8,6 +8,7 @@ export function SpeedSection() {
         <div className="md:w-1/2 text-center md:text-left">
           <h2 className="text-4xl md:text-5xl font-bold tracking-tighter mb-4">
             Less
+            {/* Animasi Spinner Baru */}
             <div className="inline-block w-8 h-8 mx-2 border-4 border-dashed rounded-full animate-spin border-green-400"></div>
             <br />
             <span className="text-green-300">More Speed.</span>

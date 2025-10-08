@@ -11,7 +11,6 @@ export function HeroSection() {
 
       <div className="relative z-10 container mx-auto px-12">
         <div className="flex flex-col md:flex-row items-center justify-between gap-8">
-
           <div className="md:w-1/2 text-center md:text-left">
             <h1 className="text-5xl md:text-7xl font-bold tracking-tighter">
               Make your android
@@ -34,12 +33,12 @@ export function HeroSection() {
               designed to make your device faster, more powerful and reliable.
             </p>
             <a href="/downloads">
+              {/* Perubahan pada Tombol */}
               <Button size="lg" className="mt-8 bg-green-300 hover:bg-green-400 text-black font-bold text-lg px-8 py-6 rounded-full">
                 Download AxionOS
               </Button>
             </a>
           </div>
-
           <div className="hidden md:flex md:w-auto justify-center">
             <img 
               src="/img/home.png" 
