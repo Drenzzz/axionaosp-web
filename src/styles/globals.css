@@ -194,3 +194,12 @@
   @apply text-green-400;
 }
   
+.testimonial-card-glow {
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.testimonial-card-glow:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 15px 5px rgba(74, 222, 128, 0.2);
+}

@@ -16,7 +16,7 @@ export function CommunitySection() {
         <p className="text-neutral-300 mb-8">Join everyone who has downloaded AxionOS. Join the performance revolution.</p>
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-10">
           {testimonials.map((item, index) => (
-            <Card key={index} className="bg-neutral-800 border-neutral-700 text-left flex flex-col">
+            <Card key={index} className="bg-neutral-800 border-neutral-700 text-left flex flex-col testimonial-card-glow">
               <CardContent className="pt-6 text-neutral-300 flex-grow">
                 <p>"{item.text}"</p>
               </CardContent>

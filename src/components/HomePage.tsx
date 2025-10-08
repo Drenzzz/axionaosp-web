@@ -5,7 +5,8 @@ import { ScrollAnimation } from "./ScrollAnimation";
 import { SecondLifeSection } from "./SecondLifeSection";
 import { SpeedSection } from "./SpeedSection";
 import { GamingSection } from "./GamingSection";
-import { FamiliarUISection } from "./FamiliarUISection";    
+import { FamiliarUISection } from "./FamiliarUISection";
+import { FeaturesSection } from "./FeaturesSection";
 
 export function HomePage() {
   return (
@@ -14,6 +15,7 @@ export function HomePage() {
       <SecondLifeSection />
       <SpeedSection />
       <FamiliarUISection />
+      <FeaturesSection />
       <GamingSection />
       <CommunitySection />
       <FaqSection />
