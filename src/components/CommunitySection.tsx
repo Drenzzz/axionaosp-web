@@ -26,7 +26,7 @@ export function CommunitySection() {
             </Card>
           ))}
         </div>
-          <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
+          <div className="flex flex-wrap justify-center items-center gap-4">
             <Button size="lg" variant="secondary">Join us on Telegram</Button>
             <a href="/downloads">
               <Button size="lg" className="bg-green-300 hover:bg-green-400 text-black font-bold">Download AxionOS</Button>
