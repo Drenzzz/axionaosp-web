@@ -27,7 +27,7 @@ export function CommunitySection() {
           ))}
         </div>
           <div className="flex flex-wrap justify-center items-center gap-4">
-            <Button size="lg" variant="secondary">Join us on Telegram</Button>
+            <Button size="lg" variant="outline">Join us on Telegram</Button>
             <a href="/downloads">
               <Button size="lg" className="bg-green-300 hover:bg-green-400 text-black font-bold">Download AxionOS</Button>
             </a>

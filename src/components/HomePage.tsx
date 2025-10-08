@@ -7,6 +7,7 @@ import { SpeedSection } from "./SpeedSection";
 import { GamingSection } from "./GamingSection";
 import { FamiliarUISection } from "./FamiliarUISection";
 import { FeaturesSection } from "./FeaturesSection";
+import { MaintainerSection } from './MaintainerSection'; 
 
 export function HomePage() {
   return (
@@ -17,6 +18,7 @@ export function HomePage() {
       <FamiliarUISection />
       <FeaturesSection />
       <GamingSection />
+      <MaintainerSection />
       <CommunitySection />
       <FaqSection />
     </>
