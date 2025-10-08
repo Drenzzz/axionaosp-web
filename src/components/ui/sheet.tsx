@@ -46,9 +46,11 @@ function SheetContent({
   className,
   children,
   side = "right",
+  showClose = true,
   ...props
 }: React.ComponentProps<typeof SheetPrimitive.Content> & {
-  side?: "top" | "right" | "bottom" | "left"
+  side?: "top" | "right" | "bottom" | "left";
+  showClose?: boolean;
 }) {
   return (
     <SheetPortal>
