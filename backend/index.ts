@@ -17,132 +17,61 @@ let cachedTeamData: any[] | null = null;
 let lastFetchTime: number = 0;
 
 const app = new Elysia()
-  .use(cors())
   .group('/api', (app) =>
     app
+      .use(cors({
+          origin: /https:\/\/axionaosp\.netlify\.app$/,
+          methods: ['GET', 'OPTIONS'],
+          allowedHeaders: ['Content-Type'],
+          credentials: true,
+          preflight: true
+      }))
       .get('/devices', async () => {
         const devicesUrl = 'https://raw.githubusercontent.com/AxionAOSP/official_devices/main/dinfo.json';
-        
-        try {
-          const response = await fetch(devicesUrl);
-          if (!response.ok) {
-            return new Response('Failed to fetch real device data', { status: 500 });
-          }
-          const data = await response.json();
-          // Langsung kembalikan data.devices
-          return data.devices; 
-        } catch (error) {
-          console.error("Error fetching real device data:", error);
-          return new Response('Internal server error', { status: 500 });
-        }
-      })
-      .get('/devices/:codename', async ({ params }) => {
-        const { codename } = params;
-        const baseUrl = 'https://raw.githubusercontent.com/AxionAOSP/official_devices/main/OTA';
-
-        try {
-          const [gmsRes, vanillaRes] = await Promise.all([
-            fetch(`${baseUrl}/GMS/${codename}.json`),
-            fetch(`${baseUrl}/VANILLA/${codename}.json`)
-          ]);
-
-          const gmsData = gmsRes.ok ? await gmsRes.json() : null;
-          const vanillaData = vanillaRes.ok ? await vanillaRes.json() : null;
-
-          return {
-            gms: gmsData?.response[0] || null,
-            vanilla: vanillaData?.response[0] || null,
-          };
-        } catch (error) {
-          console.error(`Error fetching details for ${codename}:`, error);
-          return new Response('Internal server error', { status: 500 });
-        }
-      })
-      .get('/changelog', async () => {
-        const changelogUrl = 'https://raw.githubusercontent.com/AxionAOSP/axion_changelogs/refs/heads/lineage-22.1/README.md';
-
-        try {
-          const response = await fetch(changelogUrl);
-          if (!response.ok) {
-            return new Response('Failed to fetch changelog', { status: 500 });
-          }
-
-          const markdownContent = await response.text();
-          
-          return {
-            content: markdownContent
-          };
-
-        } catch (error) {
-          console.error("Error fetching changelog:", error);
-          return new Response('Internal server error', { status: 500 });
-        }
+        const response = await fetch(devicesUrl);
+        const data = await response.json();
+        return data.devices;
       })
       .get('/team', async () => {
         const now = Date.now();
         if (cachedTeamData && now - lastFetchTime < 3600000) {
           return cachedTeamData;
         }
-
-        try {
-          const teamWithAvatars = await Promise.all(
-            teamMembers.map(async (member) => {
-              const res = await fetch(`https://api.github.com/users/${member.username}`);
-              if (!res.ok) return { ...member, avatar_url: `https://github.com/${member.username}.png` };
-              const userData = await res.json();
-              return { ...member, avatar_url: userData.avatar_url };
-            })
-          );
-          
-          cachedTeamData = teamWithAvatars;
-          lastFetchTime = now;
-          return teamWithAvatars;
-
-        } catch (error) {
-          console.error("Error fetching team data:", error);
-          return teamMembers.map(m => ({ ...m, avatar_url: `https://github.com/${m.username}.png` }));
-        }
+        const teamWithAvatars = await Promise.all(
+          teamMembers.map(async (member) => {
+            const res = await fetch(`https://api.github.com/users/${member.username}`);
+            if (!res.ok) return { ...member, avatar_url: `https://github.com/${member.username}.png` };
+            const userData = await res.json();
+            return { ...member, avatar_url: userData.avatar_url };
+          })
+        );
+        cachedTeamData = teamWithAvatars;
+        lastFetchTime = now;
+        return teamWithAvatars;
       })
       .get('/devices/:codename', async ({ params, query }) => {
         const { codename } = params;
         const supportGroup = query.support_group;
-
         const baseUrl = 'https://raw.githubusercontent.com/AxionAOSP/official_devices/main/OTA';
-
-        try {
-          // Ambil semua data secara paralel
-          const [gmsRes, vanillaRes, changelogRes] = await Promise.all([
-            fetch(`${baseUrl}/GMS/${codename}.json`),
-            fetch(`${baseUrl}/VANILLA/${codename}.json`),
-            fetch(`${baseUrl}/CHANGELOG/${codename}.txt`)
-          ]);
-
-          const gmsData = gmsRes.ok ? await gmsRes.json() : null;
-          const vanillaData = vanillaRes.ok ? await vanillaRes.json() : null;
-          const changelogData = changelogRes.ok ? await changelogRes.text() : null;
-
-          return {
-            gms: gmsData?.response[0] || null,
-            vanilla: vanillaData?.response[0] || null,
-            changelog: changelogData,
-            support_group: supportGroup || null
-          };
-        } catch (error) {
-          console.error(`Error fetching details for ${codename}:`, error);
-          return new Response('Internal server error', { status: 500 });
-        }
+        const [gmsRes, vanillaRes, changelogRes] = await Promise.all([
+          fetch(`${baseUrl}/GMS/${codename}.json`),
+          fetch(`${baseUrl}/VANILLA/${codename}.json`),
+          fetch(`${baseUrl}/CHANGELOG/${codename}.txt`)
+        ]);
+        const gmsData = gmsRes.ok ? await gmsRes.json() : null;
+        const vanillaData = vanillaRes.ok ? await vanillaRes.json() : null;
+        const changelogData = changelogRes.ok ? await changelogRes.text() : null;
+        return {
+          gms: gmsData?.response[0] || null,
+          vanilla: vanillaData?.response[0] || null,
+          changelog: changelogData,
+          support_group: supportGroup || null
+        };
       })
-
   );
 
 if (isProduction) {
-  app
-    .use(
-      staticPlugin({
-        assets: '../frontend/dist',
-        prefix: '',
-      })
-    )
+  app.use(staticPlugin({ assets: '../frontend/dist', prefix: '' }))
     .get('/*', ({ set }) => {
       set.headers['Content-Type'] = 'text/html';
       return Bun.file('../frontend/dist/index.html');
@@ -152,7 +81,5 @@ if (isProduction) {
 app.listen(3001);
 
 console.log(
-  `🦊 Elysia server is running at http://${app.server?.hostname}:${
-    app.server?.port
-  }`
+  `🦊 Elysia server is running at http://${app.server?.hostname}:${app.server?.port}`
 );

@@ -15,7 +15,8 @@ interface Device {
 
 // Fetch devices from API
 const fetchDevices = async (): Promise<Device[]> => {
-  const res = await fetch("http://localhost:3001/api/devices");
+const apiUrl = import.meta.env.PUBLIC_API_URL || 'http://localhost:3001';
+const res = await fetch(`${apiUrl}/api/devices`);
   if (!res.ok) {
     throw new Error("Network response was not ok");
   }

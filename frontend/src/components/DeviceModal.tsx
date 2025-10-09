@@ -30,7 +30,9 @@ interface DeviceInfo {
 
 // Fetcher function
 const fetchDeviceDetails = async (codename: string, supportGroup: string): Promise<DeviceDetails> => {
-  const res = await fetch(`http://localhost:3001/api/devices/${codename}?support_group=${encodeURIComponent(supportGroup)}`);
+const apiUrl = import.meta.env.PUBLIC_API_URL || 'http://localhost:3001';
+const res = await fetch(`${apiUrl}/api/devices/${codename}?support_group=${encodeURIComponent(supportGroup)}`);
+
   if (!res.ok) throw new Error('Failed to fetch device details');
   return res.json();
 };

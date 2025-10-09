@@ -9,7 +9,9 @@ interface TeamMember {
 }
 
 const fetchTeam = async (): Promise<TeamMember[]> => {
-  const res = await fetch('http://localhost:3001/api/team');
+const apiUrl = import.meta.env.PUBLIC_API_URL || 'http://localhost:3001';
+const res = await fetch(`${apiUrl}/api/team`);
+
   if (!res.ok) throw new Error('Failed to fetch team data');
   return res.json();
 };
