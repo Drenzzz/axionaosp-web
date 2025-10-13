@@ -48,7 +48,7 @@ export default function ApplyPage() {
                 You will be asked to mention:
               </p>
               <ul className="mt-3 space-y-2 text-neutral-400 list-disc pl-5 text-sm">
-                  <li>Mention ROMs you've built.</li>
+                  <li>Mention ROMs you have built.</li>
                   <li>Contributions to device trees, kernel files, etc.</li>
                   <li>Why do you want to be an AxionOS maintainer?</li>
               </ul>

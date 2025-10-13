@@ -2,12 +2,12 @@ import { NextRequest, NextResponse } from 'next/server';
 
 export const revalidate = 3600;
 
-export async function GET(
-  request: NextRequest,
-  { params }: { params: { codename: string } }
-) {
-  const { codename } = params;
-  const { searchParams } = new URL(request.url);
+export const GET = async (
+  req: NextRequest,
+  { params }: { params: Promise<{ codename: string }> }
+) => {
+  const { codename } = await params;
+  const { searchParams } = new URL(req.url);
   const supportGroup = searchParams.get('support_group');
 
   const baseUrl = 'https://raw.githubusercontent.com/AxionAOSP/official_devices/main/OTA';

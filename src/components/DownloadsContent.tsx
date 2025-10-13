@@ -6,7 +6,7 @@ import { DeviceGrid } from './DeviceGrid';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { DeviceModalContent } from './DeviceModal';
 
-interface SelectedDevice {
+export interface SelectedDevice {
   codename: string;
   name: string;
   maintainer: string;
@@ -44,7 +44,7 @@ export function DownloadsContent() {
                 supportGroup={selectedDevice.supportGroup}
             />
             )}
-    </DialogContent>
+            </DialogContent>
         </Dialog>
     </div>
   );

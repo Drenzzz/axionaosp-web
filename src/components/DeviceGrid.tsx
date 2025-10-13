@@ -5,6 +5,7 @@ import { useMemo } from "react";
 import { DeviceCard } from "./DeviceCard";
 import { Skeleton } from "./ui/skeleton";
 import { motion } from "framer-motion";
+import type { SelectedDevice } from "./DownloadsContent";
 
 interface Device {
   device_name: string;
@@ -49,7 +50,7 @@ const itemVariants = {
 interface DeviceGridProps {
   activeFilter: string;
   searchQuery: string;
-  onDeviceSelect: (device: any) => void;
+  onDeviceSelect: (device: SelectedDevice) => void;
 }
 
 export function DeviceGrid({ activeFilter, searchQuery, onDeviceSelect }: DeviceGridProps) {

@@ -16,7 +16,7 @@ export function SpeedSection() {
             <span className="text-green-300">More Speed.</span>
           </h2>
           <p className="max-w-md mx-auto md:mx-0 text-lg text-neutral-300 mb-6">
-            Your android should work as fast as you do. AxionOS runs lightning quick and doesn't slow down over time. Apps open fast, so you can spend more time being productive.
+            Your android should work as fast as you do. AxionOS runs lightning quick and doesn&apos;t slow down over time. Apps open fast, so you can spend more time being productive.
           </p>
           <a href="/about">
             <Button variant="outline">Learn more about us</Button>

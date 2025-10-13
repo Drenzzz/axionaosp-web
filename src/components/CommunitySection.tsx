@@ -20,7 +20,7 @@ export function CommunitySection() {
           {testimonials.map((item, index) => (
             <Card key={index} className="bg-neutral-800 border-neutral-700 text-left flex flex-col testimonial-card-glow">
               <CardContent className="pt-6 text-neutral-300 flex-grow">
-                <p>"{item.text}"</p>
+                <p>&quot;{item.text}&quot;</p>
               </CardContent>
               <CardFooter>
                 <p className="w-full text-right text-neutral-400 font-bold">{item.author}</p>

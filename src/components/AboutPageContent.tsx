@@ -103,7 +103,7 @@ export function AboutPageContent() {
               The primary goal of <i className="text-green-300 not-italic">AxionOS</i> is to deliver a smooth and refined Android experience. We aspire to be the open-source equivalent of <i className="text-green-300 not-italic">NothingOS</i>. By reverse-engineering core components of <i className="text-green-300 not-italic">NothingOS</i>, we aim to recreate and improve upon them as part of our open-source initiative—piece by piece—until we develop our <i className="text-green-300 not-italic">own distinct framework</i>.
             </p>
             <p>
-              Our vision explores the question: what if <i className="text-green-300 not-italic">NothingOS</i> were more <i className="text-green-300 not-italic">expressive</i>? What if it embraced <i className="text-green-300 not-italic">Material You design</i>, and more? Through this lens, we craft a unique <i className="text-green-300 not-italic">"what if"</i> version of the original.
+              Our vision explores the question: what if <i className="text-green-300 not-italic">NothingOS</i> were more <i className="text-green-300 not-italic">expressive</i>? What if it embraced <i className="text-green-300 not-italic">Material You design</i>, and more? Through this lens, we craft a unique <i className="text-green-300 not-italic">&quot;what if&quot;</i> version of the original.
             </p>
           </div>
           <div className="md:w-1/2">
