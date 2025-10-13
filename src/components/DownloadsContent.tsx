@@ -2,46 +2,22 @@
 
 import { useState } from 'react';
 import { DeviceFilters } from './DeviceFilters';
-import { DeviceCard } from './DeviceCard';
-import { motion } from 'framer-motion';
+import { DeviceGrid } from './DeviceGrid';
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
+import { DeviceModalContent } from './DeviceModal';
 
-const dummyDevices = [
-  {
-    device_name: "POCO F6",
-    codename: "peridot",
-    maintainer: "Drenzzz.",
-    image_url: "https://fdn2.gsmarena.com/vv/bigpic/xiaomi-poco-f6.jpg",
-  },
-  {
-    device_name: "POCO F6 PRO",
-    codename: "vermeer",
-    maintainer: "Lunark",
-    image_url: "https://fdn2.gsmarena.com/vv/bigpic/xiaomi-poco-f6-pro.jpg",
-  },
-  {
-    device_name: "POCO X3 NFC",
-    codename: "surya",
-    maintainer: "Skyy丨アラタ",
-    image_url: "https://i01.appmifile.com/webfile/globalimg/products/pc/poco-x3-nfc/specs-header.png",
-  }
-];
-
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { staggerChildren: 0.1 },
-  },
-};
-
-const itemVariants = {
-  hidden: { y: 20, opacity: 0 },
-  visible: { y: 0, opacity: 1 },
-};
+interface SelectedDevice {
+  codename: string;
+  name: string;
+  maintainer: string;
+  imageUrl: string;
+  supportGroup: string;
+}
 
 export function DownloadsContent() {
   const [activeFilter, setActiveFilter] = useState('All');
   const [searchQuery, setSearchQuery] = useState('');
+  const [selectedDevice, setSelectedDevice] = useState<SelectedDevice | null>(null);
 
   return (
     <div>
@@ -51,25 +27,25 @@ export function DownloadsContent() {
         searchQuery={searchQuery}
         setSearchQuery={setSearchQuery}
       />
+      <DeviceGrid 
+        activeFilter={activeFilter} 
+        searchQuery={searchQuery}
+        onDeviceSelect={setSelectedDevice}
+      />
 
-      <motion.div
-        variants={containerVariants}
-        initial="hidden"
-        animate="visible"
-        className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto"
-      >
-        {dummyDevices.map((device) => (
-          <motion.div key={device.codename} variants={itemVariants}>
-            <DeviceCard
-              deviceName={device.device_name}
-              codename={device.codename}
-              maintainer={device.maintainer}
-              imageUrl={device.image_url}
-              onClick={() => alert(`Clicked on ${device.device_name}`)}
+      <Dialog open={!!selectedDevice} onOpenChange={(isOpen) => !isOpen && setSelectedDevice(null)}>
+        <DialogContent className="bg-neutral-900/80 backdrop-blur-xl border-neutral-700 w-[95%] sm:w-full max-w-lg md:max-w-4xl">
+          <DialogHeader>
+            <DialogTitle className="sr-only">{selectedDevice?.name}</DialogTitle>
+          </DialogHeader>
+          {selectedDevice && (
+            <DeviceModalContent 
+              deviceInfo={selectedDevice}
+              supportGroup={selectedDevice.supportGroup}
             />
-          </motion.div>
-        ))}
-      </motion.div>
+          )}
+        </DialogContent>
+      </Dialog>
     </div>
   );
 }
