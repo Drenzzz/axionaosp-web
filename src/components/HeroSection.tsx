@@ -6,8 +6,10 @@ import Link from "next/link";
 export function HeroSection() {
   const animatedWords = ["better.", "faster.", "powerful.", "reliable.", "axion."];
   return (
-    <section className="relative h-screen w-full flex items-center justify-center overflow-hidden">
-
+    <section className="relative h-screen w-full flex items-center justify-center overflow-hidden bg-black">
+      <video autoPlay muted loop playsInline className="absolute top-0 left-0 w-full h-full object-cover z-0 filter blur-xl opacity-40">
+        <source src="https://www.quantamagazine.org/wp-content/uploads/2020/03/Axion_Lede_1300wide.mp4" type="video/mp4" />
+      </video>
       <div className="absolute top-0 left-0 w-full h-full bg-black/30 z-0"></div>
 
       <div className="relative z-10 container mx-auto px-12">
