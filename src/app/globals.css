@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Space+Grotesk:wght@500&display=swap');
 @import "tailwindcss";
 @import "tw-animate-css";
 
@@ -236,4 +237,11 @@
   left: 70%;
   background-image: radial-gradient(circle, #818cf8, transparent 60%);
   animation: aurora-move 45s infinite linear reverse;
+}
+
+body {
+  font-family: 'Google Sans', sans-serif;
+}
+h1, h2, h3, .logo-font {
+  font-family: var(--font-space-grotesk), sans-serif;
 }
