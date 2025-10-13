@@ -7,6 +7,7 @@ import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
 import { Skeleton } from './ui/skeleton';
 import { Download, HardDrive, Calendar, FileCode, Users, FileText } from 'lucide-react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from './ui/accordion';
 
 interface Build {
   version: string;
@@ -109,14 +110,20 @@ export function DeviceModalContent({ deviceInfo, supportGroup }: { deviceInfo: D
       ) : <p className="text-center text-neutral-400 py-8">No official builds found for this device yet.</p>}
 
       {data?.changelog && (
-        <Card className="bg-white/5 border-white/10">
-          <CardHeader>
-            <CardTitle className="text-base flex items-center"><FileText className="mr-2 h-4 w-4" /> Device Changelog</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <pre className="text-xs text-neutral-300 whitespace-pre-wrap font-sans max-h-32 overflow-y-auto custom-scrollbar">{data.changelog}</pre>
-          </CardContent>
-        </Card>
+        <Accordion type="single" collapsible className="w-full bg-white/5 border border-white/10 rounded-lg px-4">
+            <AccordionItem value="item-1" className="border-b-0">
+            <AccordionTrigger className="hover:no-underline py-3 text-base">
+                <div className="flex items-center">
+                <FileText className="mr-2 h-4 w-4" /> Device Changelog
+                </div>
+            </AccordionTrigger>
+            <AccordionContent>
+                <pre className="text-xs text-neutral-300 whitespace-pre-wrap font-sans max-h-48 overflow-y-auto custom-scrollbar pr-2">
+                {data.changelog}
+                </pre>
+            </AccordionContent>
+            </AccordionItem>
+        </Accordion>
       )}
 
       {data?.support_group && (
