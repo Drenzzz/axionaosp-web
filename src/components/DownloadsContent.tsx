@@ -33,19 +33,19 @@ export function DownloadsContent() {
         onDeviceSelect={setSelectedDevice}
       />
 
-      <Dialog open={!!selectedDevice} onOpenChange={(isOpen) => !isOpen && setSelectedDevice(null)}>
+    <Dialog open={!!selectedDevice} onOpenChange={(isOpen) => !isOpen && setSelectedDevice(null)}>
         <DialogContent className="bg-neutral-900/80 backdrop-blur-xl border-neutral-700 w-[95%] sm:w-full max-w-lg md:max-w-4xl">
-          <DialogHeader>
+            <DialogHeader>
             <DialogTitle className="sr-only">{selectedDevice?.name}</DialogTitle>
-          </DialogHeader>
-          {selectedDevice && (
+            </DialogHeader>
+            {selectedDevice && (
             <DeviceModalContent 
-              deviceInfo={selectedDevice}
-              supportGroup={selectedDevice.supportGroup}
+                deviceInfo={selectedDevice}
+                supportGroup={selectedDevice.supportGroup}
             />
-          )}
-        </DialogContent>
-      </Dialog>
+            )}
+    </DialogContent>
+        </Dialog>
     </div>
   );
 }
