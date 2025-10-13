@@ -1,3 +1,5 @@
+"use client";
+
 export function Footer() {
   return (
     <footer className="w-full bg-black text-center py-5">
