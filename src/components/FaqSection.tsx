@@ -36,27 +36,35 @@ const faqItems = [
 
 export function FaqSection() {
   return (
-    <section id="faq" className="py-20 max-w-4xl mx-auto ">
-      <h2 className="text-4xl font-bold text-center mb-10">
-        Frequently Asked Questions
-      </h2>
-      <div className="grid md:grid-cols-2 gap-x-8 container mx-auto px-4">
-        <Accordion type="single" collapsible className="w-full">
-          {faqItems.slice(0, 3).map((item, index) => (
-            <AccordionItem value={`item-${index+1}`} key={index}>
-              <AccordionTrigger className="text-left">{item.question}</AccordionTrigger>
-              <AccordionContent>{item.answer}</AccordionContent>
-            </AccordionItem>
-          ))}
-        </Accordion>
-        <Accordion type="single" collapsible className="w-full">
-          {faqItems.slice(3, 6).map((item, index) => (
-            <AccordionItem value={`item-${index+3}`} key={index}>
-              <AccordionTrigger className="text-left">{item.question}</AccordionTrigger>
-              <AccordionContent>{item.answer}</AccordionContent>
-            </AccordionItem>
-          ))}
-        </Accordion>
+    <section id="faq" className="py-20">
+      <div className="container mx-auto px-4">
+        <div className="text-center mb-12 max-w-2xl mx-auto">
+          <h2 className="text-4xl font-bold tracking-tight">
+            Frequently Asked Questions
+          </h2>
+          <p className="text-lg text-neutral-400 mt-4">
+            Punya pertanyaan? Jawaban yang paling umum ada di sini.
+          </p>
+        </div>
+        
+        <div className="max-w-3xl mx-auto">
+          <Accordion type="single" collapsible className="w-full space-y-4">
+            {faqItems.map((item, index) => (
+              <AccordionItem 
+                value={`item-${index + 1}`} 
+                key={index}
+                className="bg-neutral-800/50 border border-neutral-700/80 rounded-xl px-6 transition-all hover:border-green-400/50"
+              >
+                <AccordionTrigger className="text-left py-5 text-base hover:no-underline">
+                  {item.question}
+                </AccordionTrigger>
+                <AccordionContent className="pb-5 text-neutral-300">
+                  {item.answer}
+                </AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
+        </div>
       </div>
     </section>
   );
