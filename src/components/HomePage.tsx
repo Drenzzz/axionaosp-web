@@ -10,19 +10,36 @@ import { GamingSection } from "./GamingSection";
 import { FamiliarUISection } from "./FamiliarUISection";
 import { FeaturesSection } from "./FeaturesSection";
 import { MaintainerSection } from './MaintainerSection'; 
+import { ScrollAnimation } from "./ScrollAnimation";
 
 export function HomePage() {
   return (
     <>
       <HeroSection />
-      <SecondLifeSection />
-      <SpeedSection />
-      <FamiliarUISection />
-      <FeaturesSection />
-      <GamingSection />
-      <MaintainerSection />
-      <CommunitySection />
-      <FaqSection />
+      <ScrollAnimation>
+        <SecondLifeSection />
+      </ScrollAnimation>
+      <ScrollAnimation>
+        <SpeedSection />
+      </ScrollAnimation>
+      <ScrollAnimation>
+        <FamiliarUISection />
+      </ScrollAnimation>
+      <ScrollAnimation>
+        <FeaturesSection />
+      </ScrollAnimation>
+      <ScrollAnimation>
+        <GamingSection />
+      </ScrollAnimation>
+      <ScrollAnimation>
+        <MaintainerSection />
+      </ScrollAnimation>
+      <ScrollAnimation>
+        <CommunitySection />
+      </ScrollAnimation>
+      <ScrollAnimation>
+        <FaqSection />
+      </ScrollAnimation>
     </>
   );
 }
