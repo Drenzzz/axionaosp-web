@@ -13,6 +13,7 @@ import Link from 'next/link';
 const queryClient = new QueryClient();
 
 const navLinks = [
+  { href: '/blog', label: 'Blog' },
   { href: '/#about', label: 'About' },
   { href: '/#features', label: 'Features' },
   { href: '/#community', label: 'Community' },

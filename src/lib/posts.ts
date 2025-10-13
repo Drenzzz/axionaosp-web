@@ -22,12 +22,12 @@ export const posts: Post[] = [
     "author": {
       "name": "rmp",
       "username": "rmp22",
-      "icon": "blog/res/img/rmp22.png"
+      "icon": "/blog/res/img/rmp22.png"
     },
     "date": "2025-10-13",
     "readTime": "10 min read",
     "summary": "After months of refinement across four beta releases, AxionOS 2.1 Stable is finally here — faster, smoother, and more refined than ever.",
-    "banner": "blog/res/img/2.0-banner.png",
+    "banner": "/blog/res/img/2.0-banner.png",
     "content": `
       <p>After months of community feedback and rigorous testing across four Beta releases, we’re proud to announce the <strong>Stable release of AxionOS 2.1</strong> — built on <strong>Android 16</strong>. This version represents the most polished, balanced, and powerful AxionOS experience yet, combining new designs, stability, and OEM-inspired features that strike the perfect balance between creativity and familiarity.</p>
 
@@ -39,8 +39,8 @@ export const posts: Post[] = [
         <li>Smart Internet tile and redesigned widgets inspired by NothingOS</li>
       </ul>
       <div class="side-by-side">
-        <img src="blog/res/img/qs-blur.png" alt="QS Blur" />
-        <img src="blog/res/img/qs-material.png" alt="QS Material" />
+        <img src="/blog/res/img/qs-blur.png" alt="QS Blur" />
+        <img src="/blog/res/img/qs-material.png" alt="QS Material" />
       </div>
       
         <h2>Your Home, Refined for You</h2>
@@ -52,8 +52,8 @@ export const posts: Post[] = [
           <li><strong>Refreshed Visuals:</strong> Subtle yet meaningful UI refinements across the launcher and recents view</li>
         </ul>
         <div class="side-by-side">
-          <img src="blog/res/img/widgets.png" alt="Widgets" />
-          <img src="blog/res/img/recents.png" alt="Recents" />
+          <img src="/blog/res/img/widgets.png" alt="Widgets" />
+          <img src="/blog/res/img/recents.png" alt="Recents" />
         </div>
 
       <h2><em>In omnia paratus!</em> — Ready for Anything</h2>
@@ -78,7 +78,7 @@ export const posts: Post[] = [
         <li>In-game brightness slider for instant visibility control</li>
         <li>Real-time FPS meter</li>
       </ul>
-      <img src="blog/res/img/game_mode.png" alt="New Game Mode Panel" />
+      <img src="/blog/res/img/game_mode.png" alt="New Game Mode Panel" />
 
       <h2>Do More, Effortlessly</h2>
       <p>The reworked Freeform mode takes multitasking on AOSP to a whole new level.</p>
@@ -86,7 +86,7 @@ export const posts: Post[] = [
         <li>Floating icons for minimized freeform tasks</li>
         <li>Fully redesigned AOSP freeform UI</li>
       </ul>
-      <img src="blog/res/img/freeform.png" alt="Freeform" />
+      <img src="/blog/res/img/freeform.png" alt="Freeform" />
 
       <h2>Feature Highlights</h2>
       <h3>NothingOS Experience</h3>

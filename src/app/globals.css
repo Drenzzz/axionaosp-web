@@ -245,3 +245,51 @@ body {
 h1, h2, h3, .logo-font {
   font-family: var(--font-space-grotesk), sans-serif;
 }
+
+.post-body {
+  @apply text-neutral-300 leading-relaxed;
+}
+
+.post-body h2 {
+  @apply text-3xl font-bold text-green-300 mt-12 mb-4 border-b border-neutral-700 pb-2;
+}
+
+.post-body h3 {
+  @apply text-2xl font-bold text-green-400 mt-8 mb-4;
+}
+
+.post-body h4 {
+   @apply text-xl font-semibold text-neutral-200 mt-6 mb-3;
+}
+
+.post-body p {
+  @apply mb-6;
+}
+
+.post-body ul {
+  @apply list-disc pl-5 mb-6 space-y-2;
+}
+
+.post-body li {
+  @apply pl-2;
+}
+
+.post-body strong {
+  @apply text-green-300 font-semibold;
+}
+
+.post-body em {
+  @apply text-green-400 not-italic;
+}
+
+.post-body img {
+  @apply rounded-xl my-8 mx-auto;
+}
+
+.side-by-side {
+  @apply flex flex-col md:flex-row gap-4 justify-center my-8;
+}
+
+.side-by-side img {
+  @apply max-w-full md:max-w-[320px] rounded-xl shadow-lg object-contain my-0;
+}
