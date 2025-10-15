@@ -26,7 +26,6 @@ export function DeviceCard({
   const avatarUrl = `https://github.com/${github_username}.png`;
 
   return (
-    <Link href={`/downloads/${codename}`} className="h-full"> 
       <motion.div
         onHoverStart={() => setIsHovered(true)}
         onHoverEnd={() => setIsHovered(false)}
@@ -77,19 +76,20 @@ export function DeviceCard({
           </div>
         </CardContent>
         <CardFooter className="p-6 pt-0 mt-auto">
-          <motion.div 
-            className="w-full bg-green-500/10 hover:bg-green-500/20 border border-green-500/30 rounded-lg px-4 py-3 flex items-center justify-between transition-colors"
-            whileHover={{ x: 4 }}
-          >
-            <span className="text-green-400 font-semibold text-sm flex items-center gap-2">
-              <Download className="w-4 h-4" />
-              View Builds
-            </span>
-            <ArrowRight className="w-4 h-4 text-green-400 transition-transform group-hover:translate-x-1" />
-          </motion.div>
-        </CardFooter> 
+          <Link href={`/downloads/${codename}`} className="w-full">
+            <motion.div 
+              className="w-full bg-green-500/10 hover:bg-green-500/20 border border-green-500/30 rounded-lg px-4 py-3 flex items-center justify-between transition-colors"
+              whileHover={{ x: 4 }}
+            >
+              <span className="text-green-400 font-semibold text-sm flex items-center gap-2">
+                <Download className="w-4 h-4" />
+                View Builds
+              </span>
+              <ArrowRight className="w-4 h-4 text-green-400 transition-transform group-hover:translate-x-1" />
+            </motion.div>
+          </Link>
+        </CardFooter>
       </Card> 
     </motion.div> 
-    </Link>
   );
 }
