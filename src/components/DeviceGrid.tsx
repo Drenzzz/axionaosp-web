@@ -5,7 +5,6 @@ import { useMemo } from "react";
 import { DeviceCard } from "./DeviceCard";
 import { Skeleton } from "./ui/skeleton";
 import { motion } from "framer-motion";
-import type { SelectedDevice } from "./DownloadsContent";
 
 interface Device {
   device_name: string;
@@ -51,10 +50,9 @@ const itemVariants = {
 interface DeviceGridProps {
   activeFilter: string;
   searchQuery: string;
-  onDeviceSelect: (device: SelectedDevice) => void;
 }
 
-export function DeviceGrid({ activeFilter, searchQuery, onDeviceSelect }: DeviceGridProps) {
+export function DeviceGrid({ activeFilter, searchQuery }: DeviceGridProps) {
   const { data: devices, isLoading, isError } = useQuery({
     queryKey: ["devices"],
     queryFn: fetchDevices,
@@ -99,20 +97,13 @@ export function DeviceGrid({ activeFilter, searchQuery, onDeviceSelect }: Device
     >
       {filteredDevices.length > 0 ? (
         filteredDevices.map((device) => (
-          <motion.div key={device.codename} variants={itemVariants}>
+          <motion.div key={device.codename} variants={itemVariants} className="h-full">
             <DeviceCard
               deviceName={device.device_name}
               codename={device.codename}
               maintainer={device.maintainer}
               imageUrl={device.image_url}
               github_username={device.github_username}
-              onClick={() => onDeviceSelect({
-                codename: device.codename,
-                name: device.device_name,
-                maintainer: device.maintainer,
-                imageUrl: device.image_url,
-                supportGroup: device.support_group
-              })}
             />
           </motion.div>
         ))

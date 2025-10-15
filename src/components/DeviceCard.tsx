@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { ArrowRight, Download } from "lucide-react";
 import { motion } from "framer-motion";
+import Link from 'next/link';
 
 interface DeviceCardProps {
   imageUrl: string;
@@ -11,7 +12,6 @@ interface DeviceCardProps {
   codename: string;
   maintainer: string;
   github_username: string;
-  onClick: () => void;
 }
 
 export function DeviceCard({ 
@@ -20,21 +20,20 @@ export function DeviceCard({
   codename, 
   maintainer, 
   github_username,
-  onClick 
 }: DeviceCardProps) {
   const [isHovered, setIsHovered] = useState(false);
 
   const avatarUrl = `https://github.com/${github_username}.png`;
 
   return (
-    <motion.button
-      onClick={onClick}
-      onHoverStart={() => setIsHovered(true)}
-      onHoverEnd={() => setIsHovered(false)}
-      className="group w-full h-full text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-400 focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-900"
-      whileHover={{ scale: 1.02 }}
-      transition={{ type: "spring", stiffness: 400, damping: 20 }}
-    >
+    <Link href={`/downloads/${codename}`} className="h-full"> 
+      <motion.div
+        onHoverStart={() => setIsHovered(true)}
+        onHoverEnd={() => setIsHovered(false)}
+        className="group w-full h-full text-left"
+        whileHover={{ scale: 1.02 }}
+        transition={{ type: "spring", stiffness: 400, damping: 20 }}
+      >
       <Card className="bg-neutral-800/50 border-neutral-700/80 rounded-2xl h-full flex flex-col transition-all duration-300 group-hover:border-green-400/80 group-hover:scale-[1.02] group-hover:bg-neutral-800">        
         <CardHeader className="p-0 relative h-48 overflow-hidden">
           <div 
@@ -54,6 +53,7 @@ export function DeviceCard({
             transition={{ type: "spring", stiffness: 300, damping: 15 }}
           />
           <div className="absolute bottom-0 h-1/2 w-full bg-gradient-to-t from-neutral-900/80 to-transparent" />
+
         </CardHeader>
         <CardContent className="p-6 flex-grow space-y-4">
           <div>
@@ -87,8 +87,9 @@ export function DeviceCard({
             </span>
             <ArrowRight className="w-4 h-4 text-green-400 transition-transform group-hover:translate-x-1" />
           </motion.div>
-        </CardFooter>
-      </Card>
-    </motion.button>
+        </CardFooter> 
+      </Card> 
+    </motion.div> 
+    </Link>
   );
 }
