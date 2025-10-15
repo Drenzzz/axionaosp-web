@@ -193,14 +193,38 @@
   @apply text-green-400;
 }
   
-.testimonial-card-glow {
+.card-glow-effect {
   position: relative;
   transition: all 0.3s ease;
 }
 
-.testimonial-card-glow:hover {
+.card-glow-effect:hover {
+  border-color: rgba(74, 222, 128, 0.5); /* green-400/50 */
   transform: translateY(-5px);
-  box-shadow: 0 0 15px 5px rgba(74, 222, 128, 0.2);
+}
+
+.card-glow-effect::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 0.875rem;
+  background: radial-gradient(400px circle at var(--mouse-x) var(--mouse-y), rgba(74, 222, 128, 0.15), transparent 80%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.card-glow-effect:hover::before {
+  opacity: 1;
+}
+
+.testimonial-button-glow {
+  transition: all 0.3s ease;
+}
+
+.testimonial-button-glow:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px 5px rgba(74, 222, 128, 0.2);
 }
 
 .has-hover:hover .group:not(:hover) {
