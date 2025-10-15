@@ -429,3 +429,13 @@ h1, h2, h3, .logo-font {
 .nav-link-effect:hover::before {
   opacity: 1;
 }
+
+.footer-icon-effect {
+  transition: all 0.3s ease;
+}
+
+.footer-icon-effect:hover {
+  transform: scale(1.2) translateY(-2px);
+  color: white;
+  filter: drop-shadow(0 0 8px rgba(74, 222, 128, 0.5)); /* green-400 glow */
+}
