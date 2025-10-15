@@ -13,6 +13,7 @@ interface Device {
   maintainer: string;
   image_url: string;
   support_group: string;
+  github_username: string;
 }
 
 const fetchDevices = async (): Promise<Device[]> => {
@@ -104,6 +105,7 @@ export function DeviceGrid({ activeFilter, searchQuery, onDeviceSelect }: Device
               codename={device.codename}
               maintainer={device.maintainer}
               imageUrl={device.image_url}
+              github_username={device.github_username}
               onClick={() => onDeviceSelect({
                 codename: device.codename,
                 name: device.device_name,
