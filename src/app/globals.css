@@ -398,3 +398,34 @@ h1, h2, h3, .logo-font {
   width: 24px;
   border-radius: 4px;
 }
+
+.nav-link-effect {
+  position: relative;
+  padding: 8px 12px;
+  border-radius: 999px; /* rounded-full */
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  -webkit-backface-visibility: hidden; /* Mencegah flicker pada beberapa browser */
+  backface-visibility: hidden;
+  transform: translateZ(0);
+}
+
+.nav-link-effect:hover {
+  transform: scale(1.1);
+  color: white;
+}
+
+/* Pseudo-element untuk efek background glow */
+.nav-link-effect::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 999px; /* rounded-full */
+  background: radial-gradient(circle, rgba(74, 222, 128, 0.2) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  z-index: -1;
+}
+
+.nav-link-effect:hover::before {
+  opacity: 1;
+}

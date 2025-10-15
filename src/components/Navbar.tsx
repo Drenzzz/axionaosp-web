@@ -49,24 +49,26 @@ export function Navbar() {
             </Link>
 
             {/* Desktop Menu */}
-            <div className="hidden md:flex items-center gap-6">
-              <nav className="flex items-center gap-6">
+            <div className="hidden md:flex items-center gap-2"> {/* Mengurangi gap agar lebih pas */}
+              <nav className="flex items-center gap-2"> {/* Mengurangi gap agar lebih pas */}
                 {navLinks.map((link) => (
                   <Link 
                     key={link.href} 
                     href={link.href} 
                     onClick={(e) => handleNavClick(e, link.href)}
-                    className="text-sm text-neutral-300 hover:text-white transition-colors"
+                    // Tambahkan kelas baru di sini
+                    className="nav-link-effect text-sm text-neutral-300 hover:text-white"
                   >
                     {link.label}
                   </Link>
                 ))}
-                <button onClick={() => setIsChangelogOpen(true)} className="text-sm text-neutral-300 hover:text-white transition-colors">
+                {/* Tambahkan kelas baru di sini */}
+                <button onClick={() => setIsChangelogOpen(true)} className="nav-link-effect text-sm text-neutral-300 hover:text-white">
                   Changelog
                 </button>
               </nav>
               <Link href="/downloads">
-                <Button className="bg-green-300 hover:bg-green-400 text-black font-semibold">
+                <Button className="bg-green-300 hover:bg-green-400 text-black font-semibold button-glow-effect">
                   Downloads
                 </Button>
               </Link>
@@ -88,17 +90,19 @@ export function Navbar() {
                           key={link.href} 
                           href={link.href}
                           onClick={(e) => handleNavClick(e, link.href)}
-                          className="text-neutral-300 hover:text-white transition-colors"
+                          // Tambahkan kelas baru di sini juga
+                          className="nav-link-effect text-neutral-300 hover:text-white"
                         >
                           {link.label}
                         </Link>
                       ))}
+                      {/* Tambahkan kelas baru di sini juga */}
                       <button 
                         onClick={() => {
                           setIsMobileMenuOpen(false);
                           setIsChangelogOpen(true);
                         }} 
-                        className="text-neutral-300 hover:text-white transition-colors"
+                        className="nav-link-effect text-neutral-300 hover:text-white"
                       >
                         Changelog
                       </button>
@@ -107,7 +111,7 @@ export function Navbar() {
                     <Link 
                       href="/downloads"
                       onClick={() => setIsMobileMenuOpen(false)}
-                      className="mt-12 block bg-green-400/20 border border-green-400/50 text-green-300 font-semibold px-10 py-4 rounded-xl text-lg"
+                      className="mt-12 block bg-green-400/20 border border-green-400/50 text-green-300 font-semibold px-10 py-4 rounded-xl text-lg button-glow-effect"
                     >
                       Downloads
                     </Link>
