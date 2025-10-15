@@ -13,7 +13,7 @@ export function MaintainerSection() {
             Become an official maintainer for AxionOS, bring official support for your device, and be a part of our growing community.
           </p>
           <a href="/apply">
-            <Button variant="outline">Learn More & Apply</Button>
+            <Button variant="outline" className="button-glow-effect px-8 py-6 rounded-full ">Learn More & Apply</Button>
           </a>
         </div>
       </section>

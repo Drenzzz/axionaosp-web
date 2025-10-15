@@ -19,7 +19,7 @@ export function SpeedSection() {
             Your android should work as fast as you do. AxionOS runs lightning quick and doesn&apos;t slow down over time. Apps open fast, so you can spend more time being productive.
           </p>
           <a href="/about">
-            <Button variant="outline">Learn more about us</Button>
+            <Button variant="outline" className="button-glow-effect px-8 py-6 rounded-full ">Learn more about us</Button>
           </a>
         </div>
 

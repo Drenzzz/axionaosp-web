@@ -218,13 +218,13 @@
   opacity: 1;
 }
 
-.testimonial-button-glow {
-  transition: all 0.3s ease;
+.button-glow-effect {
+  transition: all 0.3s ease-in-out !important;
 }
 
-.testimonial-button-glow:hover {
+.button-glow-effect:hover {
   transform: scale(1.05);
-  box-shadow: 0 0 20px 5px rgba(74, 222, 128, 0.2);
+  box-shadow: 0 0 25px 8px rgba(74, 222, 128, 0.25);
 }
 
 .has-hover:hover .group:not(:hover) {

@@ -36,7 +36,7 @@ export function HeroSection() {
               designed to make your device faster, more powerful and reliable.
             </p>
             <Link href="/downloads">
-              <Button size="lg" className="mt-8 bg-green-300 hover:bg-green-400 text-black font-bold text-lg px-8 py-6 rounded-full">
+              <Button size="lg" className="mt-8 bg-green-300 hover:bg-green-400 text-black font-bold text-lg px-8 py-6 rounded-full button-glow-effect">
                 Download AxionOS
               </Button>
             </Link>

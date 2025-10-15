@@ -18,7 +18,7 @@ export default function ApplyPage() {
             Please carefully fill out the details on our GitHub issue tracker.
           </p>
           <Link href="https://github.com/AxionAOSP/official_devices/issues/new?template=maintainer_application.yml" target="_blank" rel="noopener noreferrer" className="mt-8 inline-block">
-            <Button size="lg" className="bg-green-300 hover:bg-green-400 text-black font-bold">
+            <Button size="lg" className="bg-green-300 hover:bg-green-400 text-black font-bold px-8 py-6 rounded-full button-glow-effect">
               Apply Now via GitHub
             </Button>
           </Link>

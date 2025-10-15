@@ -67,7 +67,7 @@ export default async function DevicePage({ params }: { params: Promise<{ codenam
             </div>
           </div>
           <a href={build.url} target="_blank" rel="noopener noreferrer">
-            <Button className="w-full sm:w-auto bg-green-400 text-black font-bold hover:bg-green-500 transition-colors shadow-md shadow-green-500/20 hover:shadow-lg hover:shadow-green-500/30">
+            <Button className="w-full sm:w-auto bg-green-400 text-black font-bold hover:bg-green-500 transition-colors shadow-md shadow-green-500/20 hover:shadow-lg hover:shadow-green-500/30 button-glow-effect">
               <Download className="mr-2 h-4 w-4" /> Download ({sizeMB} MB)
             </Button>
           </a>
@@ -80,7 +80,7 @@ export default async function DevicePage({ params }: { params: Promise<{ codenam
     <div className="pt-36 pb-20 min-h-screen">
       <div className="container mx-auto px-4 max-w-4xl space-y-10">
         
-        <Button asChild variant="ghost" className="hover:bg-neutral-800 text-neutral-400 hover:text-white px-4 py-2 h-auto">
+        <Button asChild variant="outline" className="hover:bg-neutral-800 text-neutral-400 hover:text-white px-4 py-2 h-auto button-glow-effect">
             <Link href="/downloads">
                 <ChevronLeft className="w-5 h-5 mr-2"/>
                 Back to All Devices
@@ -103,7 +103,7 @@ export default async function DevicePage({ params }: { params: Promise<{ codenam
             </Link>
             {info.support_group && (
                 <a href={info.support_group} target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto flex-shrink-0">
-                    <Button variant="outline" className="w-full bg-transparent hover:bg-neutral-700/80 border-neutral-700 text-base py-6 transition-all duration-300 hover:border-green-400/50 hover:shadow-lg hover:shadow-green-500/10">
+                    <Button variant="outline" className="w-full bg-transparent hover:bg-neutral-700/80 border-neutral-700 text-base py-6 transition-all duration-300 hover:border-green-400/50 hover:shadow-lg hover:shadow-green-500/10 button-glow-effect">
                         <Users className="mr-2 h-5 w-5 text-green-400" /> Support Group
                     </Button>
                 </a>

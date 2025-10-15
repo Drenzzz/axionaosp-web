@@ -18,7 +18,7 @@ export function DeviceFilters({ activeFilter, setActiveFilter, searchQuery, setS
   return (
     <div className="mb-10">
       <div className="max-w-md mx-auto mb-8">
-        <div className="relative">
+        <div className="relative button-glow-effect rounded-full">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-neutral-400" />
           <Input
             type="text"
@@ -38,8 +38,8 @@ export function DeviceFilters({ activeFilter, setActiveFilter, searchQuery, setS
             variant={activeFilter === filter ? "default" : "secondary"}
             className={
               activeFilter === filter
-                ? "rounded-full bg-green-300 text-black hover:bg-green-400"
-                : "rounded-full"
+                ? "rounded-full bg-green-300 text-black hover:bg-green-400 button-glow-effect"
+                : "rounded-full button-glow-effect"
             }
           >
             {filter}
