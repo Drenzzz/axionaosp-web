@@ -296,3 +296,81 @@ h1, h2, h3, .logo-font {
 .side-by-side img {
   @apply max-w-full md:max-w-[320px] rounded-xl shadow-lg object-contain my-0;
 }
+
+
+.embla {
+  position: relative;
+  max-width: 250px; 
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.embla__viewport {
+  overflow: hidden;
+}
+
+.embla__container {
+  display: flex;
+}
+
+.embla__slide {
+  flex: 0 0 100%;
+  min-width: 0;
+  position: relative;
+  padding: 0.5rem; 
+}
+
+.embla__button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  background-color: rgba(38, 38, 38, 0.6);
+  backdrop-filter: blur(4px);
+  border: 1px solid #404040;
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  color: white;
+  transition: all 0.2s ease;
+}
+
+.embla__button:hover {
+  background-color: rgba(64, 64, 64, 0.8);
+  border-color: #525252;
+}
+
+.embla__button--prev {
+  left: -12px; 
+}
+
+.embla__button--next {
+  right: -12px;
+}
+
+.embla__dots {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 24px;
+}
+
+.embla__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #404040;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.embla__dot.embla__dot--selected {
+  background-color: #4ade80;
+  width: 24px;
+  border-radius: 4px;
+}

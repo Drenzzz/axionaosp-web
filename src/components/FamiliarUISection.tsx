@@ -4,8 +4,9 @@ import { ScreenshotCarousel } from './ScreenshotCarousel';
 
 export function FamiliarUISection() {
   return (
-      <section id="screenshots" className="py-20 text-center">
-        <h2 className="text-4xl md:text-5xl font-bold tracking-tighter mb-10">
+    <section id="screenshots" className="py-20 text-center">
+      <div className="container mx-auto px-4 max-w-3xl"> 
+        <h2 className="text-4xl md:text-5xl font-bold tracking-tighter mb-12">
           A familiar UI
           <br />
           <span className="text-green-300">
@@ -15,6 +16,7 @@ export function FamiliarUISection() {
           </span>
         </h2>
         <ScreenshotCarousel />
-      </section>
+      </div>
+    </section>
   );
 }
