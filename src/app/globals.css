@@ -439,3 +439,30 @@ h1, h2, h3, .logo-font {
   color: white;
   filter: drop-shadow(0 0 8px rgba(74, 222, 128, 0.5)); /* green-400 glow */
 }
+
+.team-card-effect {
+  position: relative;
+  transition: all 0.3s ease-in-out;
+}
+
+.team-card-effect:hover {
+  transform: scale(1.05);
+  border-color: rgba(74, 222, 128, 0.4); /* green-400/40 */
+  box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.3);
+}
+
+.team-card-effect::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 1rem; /* rounded-xl */
+  background: radial-gradient(circle, rgba(74, 222, 128, 0.15) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.team-card-effect:hover::before {
+  opacity: 1;
+}
