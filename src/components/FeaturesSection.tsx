@@ -15,7 +15,7 @@ export function FeaturesSection() {
               A collection of thoughtfully curated features designed for everyday use—simple, efficient, and never overwhelming. Just what you need, nothing more.
             </p>
             <a href="https://github.com/AxionAOSP/axion_features/blob/lineage-22.1/README.md" target="_blank" rel="noopener noreferrer">
-              <Button variant="outline" className="button-glow-effect px-8 py-6 rounded-full ">Learn More</Button>
+              <Button variant="outline" className="backdrop-blur-sm button-glow-effect px-8 py-6 rounded-full ">Learn More</Button>
             </a>
           </div>
           <div className="md:w-1/2 flex justify-center">

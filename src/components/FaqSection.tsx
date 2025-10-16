@@ -48,7 +48,7 @@ export function FaqSection() {
         </div>
         
         <div className="max-w-3xl mx-auto">
-          <Accordion type="single" collapsible className="w-full space-y-4">
+          <Accordion type="single" collapsible className="backdrop-blur-sm w-full space-y-3">
             {faqItems.map((item, index) => (
               <AccordionItem 
                 value={`item-${index + 1}`} 

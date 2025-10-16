@@ -65,7 +65,7 @@ export function CommunitySection() {
           
         <div className="flex flex-wrap justify-center items-center gap-4">
           <a href="https://t.me/AxionOS_android" target="_blank" rel="noopener noreferrer">
-            <Button size="lg" variant="outline" className="button-glow-effect px-8 py-6 rounded-full ">Join us on Telegram</Button>
+            <Button size="lg" variant="outline" className="backdrop-blur-sm button-glow-effect px-8 py-6 rounded-full ">Join us on Telegram</Button>
           </a>
           <Link href="/downloads">
             <Button size="lg" className="bg-green-300 hover:bg-green-400 text-black font-bold button-glow-effect px-8 py-6 rounded-full">Download AxionOS</Button>

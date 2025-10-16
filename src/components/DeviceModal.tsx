@@ -90,7 +90,7 @@ export function DeviceModalContent({ deviceInfo, supportGroup }: { deviceInfo: D
     <div className="space-y-6 max-h-[85vh] overflow-y-auto custom-scrollbar p-1 pr-4">
       <img src={deviceInfo.imageUrl} alt={deviceInfo.name} className="mx-auto h-56 w-auto object-contain"/>
 
-      <Card className="bg-white/5 border-white/10 text-center">
+      <Card className="backdrop-blur-sm bg-white/5 border-white/10 text-center">
         <CardContent className="p-4">
           <h3 className="text-2xl font-bold">{deviceInfo.name}</h3>
           <p className="font-mono text-neutral-400">{deviceInfo.codename}</p>
@@ -110,7 +110,7 @@ export function DeviceModalContent({ deviceInfo, supportGroup }: { deviceInfo: D
       ) : <p className="text-center text-neutral-400 py-8">No official builds found for this device yet.</p>}
 
       {data?.changelog && (
-        <Accordion type="single" collapsible className="w-full bg-white/5 border border-white/10 rounded-lg px-4">
+        <Accordion type="single" collapsible className="backdrop-blur-sm w-full bg-white/5 border border-white/10 rounded-lg px-4">
             <AccordionItem value="item-1" className="border-b-0">
             <AccordionTrigger className="hover:no-underline py-3 text-base">
                 <div className="flex items-center">

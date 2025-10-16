@@ -80,7 +80,7 @@ export default async function DevicePage({ params }: { params: Promise<{ codenam
     <div className="pt-36 pb-20 min-h-screen">
       <div className="container mx-auto px-4 max-w-4xl space-y-10">
         
-        <Button asChild variant="outline" className="hover:bg-neutral-800 text-neutral-400 hover:text-white px-4 py-2 h-auto button-glow-effect">
+        <Button asChild variant="outline" className="backdrop-blur-sm hover:bg-neutral-800 text-neutral-400 hover:text-white px-4 py-2 h-auto button-glow-effect">
             <Link href="/downloads">
                 <ChevronLeft className="w-5 h-5 mr-2"/>
                 Back to All Devices
@@ -110,7 +110,7 @@ export default async function DevicePage({ params }: { params: Promise<{ codenam
             )}
         </Card>
         
-        <div className="space-y-4">
+        <div className="backdrop-blur-sm space-y-4">
             <h2 className="text-2xl font-bold text-white">Available Builds</h2>
             {details.gms && <BuildCard type="GApps" build={details.gms} />}
             {details.vanilla && <BuildCard type="Vanilla" build={details.vanilla} />}

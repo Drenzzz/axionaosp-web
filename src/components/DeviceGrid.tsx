@@ -93,7 +93,7 @@ export function DeviceGrid({ activeFilter, searchQuery }: DeviceGridProps) {
       variants={containerVariants}
       initial="hidden"
       animate="visible"
-      className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto"
+      className="backdrop-blur-sm grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto"
     >
       {filteredDevices.length > 0 ? (
         filteredDevices.map((device) => (

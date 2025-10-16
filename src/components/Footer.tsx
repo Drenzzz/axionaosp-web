@@ -14,7 +14,7 @@ const navLinks = [
 
 export function Footer() {
   return (
-    <footer className="w-full bg-neutral-950/50 border-t border-neutral-800/50 py-12">
+    <footer className="backdrop-blur-sm w-full bg-neutral-950/50 border-t border-neutral-800/50 py-12">
       <div className="container mx-auto px-4 flex flex-col items-center text-center gap-8">
         
         <Link href="/" className="flex items-center gap-2 group">
