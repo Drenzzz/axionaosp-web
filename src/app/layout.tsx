@@ -1,12 +1,9 @@
 import type { Metadata } from "next";
-import { Space_Grotesk } from "next/font/google";
+import { Onest } from "next/font/google";
 import "./globals.css";
 import { ClientLayout } from "@/components/ClientLayout";
 
-const spaceGrotesk = Space_Grotesk({ 
-  subsets: ["latin"],
-  variable: "--font-space-grotesk",
-});
+const onest = Onest({ subsets: ["latin"], variable: "--font-onest" });
 
 export const metadata: Metadata = {
   title: "AxionAOSP",
@@ -19,7 +16,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${spaceGrotesk.variable} dark`}>
+    <html lang="en" className={`${onest.variable} dark`}>
       <body className="bg-neutral-900 text-white">
         <ClientLayout>{children}</ClientLayout>
       </body>
