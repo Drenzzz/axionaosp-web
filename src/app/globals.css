@@ -195,23 +195,25 @@
   
 .card-glow-effect {
   position: relative;
-  transition: all 0.3s ease;
+  transition: all 0.3s ease-in-out;
 }
 
 .card-glow-effect:hover {
-  border-color: rgba(74, 222, 128, 0.5); /* green-400/50 */
-  transform: translateY(-5px);
+  transform: scale(1.05);
+  border-color: rgba(74, 222, 128, 0.4); /* green-400/40 */
+  box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.3);
 }
 
 .card-glow-effect::before {
   content: '';
   position: absolute;
   inset: 0;
-  border-radius: 0.875rem;
-  background: radial-gradient(400px circle at var(--mouse-x) var(--mouse-y), rgba(74, 222, 128, 0.15), transparent 80%);
+  border-radius: 1rem; /* rounded-xl */
+  background: radial-gradient(circle, rgba(74, 222, 128, 0.15) 0%, transparent 70%);
   opacity: 0;
   transition: opacity 0.3s ease;
   pointer-events: none;
+  z-index: -1;
 }
 
 .card-glow-effect:hover::before {
