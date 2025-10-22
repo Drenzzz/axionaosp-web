@@ -33,29 +33,43 @@ interface DeviceInfo {
 }
 
 async function getDeviceData(codename: string): Promise<{ details: DeviceDetails; info: DeviceInfo | undefined }> {
-  const baseUrl = process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
+  const githubBaseUrl = 'https://raw.githubusercontent.com/AxionAOSP/official_devices/main';
+
   try {
-    const detailsRes = await fetch(`${baseUrl}/api/devices/${codename}`, { next: { revalidate: 3600 } });
-    if (!detailsRes.ok) throw new Error(`Failed to fetch details for ${codename}`);
-    const detailsData = await detailsRes.json();
+    const [detailsRes, allDevicesRes] = await Promise.all([
+      Promise.all([
+        fetch(`${githubBaseUrl}/OTA/GMS/${codename}.json`, { next: { revalidate: 3600 } }),
+        fetch(`${githubBaseUrl}/OTA/VANILLA/${codename}.json`, { next: { revalidate: 3600 } }),
+        fetch(`${githubBaseUrl}/OTA/CHANGELOG/${codename}.txt`, { next: { revalidate: 3600 } })
+      ]),
+      fetch(`${githubBaseUrl}/dinfo.json`, { next: { revalidate: 3600 } })
+    ]);
+
+    const [gmsRes, vanillaRes, changelogRes] = detailsRes;
+    const gmsData = gmsRes.ok ? await gmsRes.json() : null;
+    const vanillaData = vanillaRes.ok ? await vanillaRes.json() : null;
+    const changelogData = changelogRes.ok ? await changelogRes.text() : null;
+
     const details: DeviceDetails = {
-      gms: detailsData.gms,
-      vanilla: detailsData.vanilla,
-      changelog: detailsData.changelog,
+      gms: gmsData?.response[0] || null,
+      vanilla: vanillaData?.response[0] || null,
+      changelog: changelogData
     };
 
-    const allDevicesRes = await fetch(`${baseUrl}/api/devices`, { next: { revalidate: 3600 } });
-    if (!allDevicesRes.ok) throw new Error("Failed to fetch all devices");
-    const allDevices: DeviceInfo[] = await allDevicesRes.json();
-    const info = allDevices.find((device) => device.codename === codename);
+    let info: DeviceInfo | undefined = undefined;
+    if (allDevicesRes.ok) {
+      const allDevicesData = await allDevicesRes.json();
+      const allDevices: DeviceInfo[] = allDevicesData.devices;
+      info = allDevices.find(device => device.codename === codename);
+    } else {
+      console.error("Failed to fetch all devices info from GitHub");
+    }
 
     return { details, info };
+
   } catch (error) {
-    console.error("Error fetching device data:", error);
-    const allDevicesResSafe = await fetch(`${baseUrl}/api/devices`, { next: { revalidate: 3600 } }).catch(() => null);
-    const allDevicesSafe = allDevicesResSafe && allDevicesResSafe.ok ? await allDevicesResSafe.json() : [];
-    const infoSafe = allDevicesSafe.find((device: DeviceInfo) => device.codename === codename);
-    return { details: { gms: null, vanilla: null, changelog: null }, info: infoSafe };
+    console.error("Error fetching device data directly from GitHub:", error);
+    return { details: { gms: null, vanilla: null, changelog: null }, info: undefined };
   }
 }
 
