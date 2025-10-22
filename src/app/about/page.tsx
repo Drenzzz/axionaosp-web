@@ -1,5 +1,6 @@
 import { TeamMemberCard } from "@/components/about/TeamCard";
 import { CodenamePill } from "@/components/CodenamePill";
+import Image from "next/image";
 
 interface TeamMember {
   username: string;
@@ -104,7 +105,14 @@ export default async function AboutPage() {
             </p>
           </div>
           <div className="md:w-1/2">
-            <img src="/img/screenshot8.png" alt="AxionOS Settings" className="rounded-3xl max-h-[500px] mx-auto shadow-2xl shadow-black/50" />
+            <Image
+              src="/img/screenshot8.png"
+              alt="AxionOS Settings"
+              width={250}
+              height={500}
+              className="rounded-3xl mx-auto shadow-2xl shadow-black/50 object-contain"
+              style={{ maxHeight: '500px', width: 'auto' }}
+            />
           </div>
         </div>
       </section>

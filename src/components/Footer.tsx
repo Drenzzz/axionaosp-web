@@ -2,6 +2,7 @@
 
 import { Github, Send } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 
 const footerNavLinks = [
   { href: '/blog', label: 'Blog' },
@@ -17,7 +18,13 @@ export function Footer() {
       <div className="container mx-auto px-4 flex flex-col items-center text-center gap-8">
 
         <Link href="/" className="flex items-center gap-2 group">
-          <img src="/img/axionaosp.png" alt="AxionOS Logo" className="h-12 w-auto transition-transform duration-300 group-hover:rotate-[20deg]" />
+          <Image
+            src="/img/axionaosp.png"
+            alt="AxionOS Logo"
+            width={48}
+            height={48}
+            className="w-auto transition-transform duration-300 group-hover:rotate-[20deg]"
+          />
           <span className="text-xl font-medium text-green-300 logo-font">AxionOS</span>
         </Link>
 

@@ -5,6 +5,7 @@ import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/componen
 import { ArrowRight, Download } from "lucide-react";
 import { motion } from "framer-motion";
 import Link from 'next/link';
+import Image from "next/image";
 
 interface DeviceCardProps {
   imageUrl: string;
@@ -64,11 +65,14 @@ export function DeviceCard({
             </p>
           </div>
           <div className="flex items-center gap-3 text-sm pt-2">
-            <img 
-              src={avatarUrl} 
-              alt={maintainer} 
-              className="w-10 h-10 rounded-full border-2 border-neutral-700 group-hover:border-green-500/50 transition-colors"
-            />
+              <Image
+                src={avatarUrl}
+                alt={maintainer}
+                width={40}
+                height={40}
+                className="rounded-full border-2 border-neutral-700 group-hover:border-green-500/50 transition-colors" // Hapus w-10 h-10
+                unoptimized
+              />
             <div>
               <p className="text-xs text-neutral-500">Maintained by</p>
               <p className="font-semibold text-green-400">{maintainer}</p>

@@ -8,6 +8,7 @@ import { Skeleton } from "../ui/skeleton";
 import { Download, HardDrive, Calendar, FileCode, Users, FileText } from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "../ui/accordion";
+import Image from "next/image";
 
 interface Build {
   version: string;
@@ -94,8 +95,15 @@ export function DeviceModalContent({ deviceInfo, supportGroup }: { deviceInfo: D
 
   return (
     <div className="space-y-6 max-h-[85vh] overflow-y-auto custom-scrollbar p-1 pr-4">
-      <img src={deviceInfo.imageUrl} alt={deviceInfo.name} className="mx-auto h-56 w-auto object-contain" />
-
+        <Image
+          src={deviceInfo.imageUrl}
+          alt={deviceInfo.name}
+          width={200}
+          height={224}
+          className="object-contain"
+          unoptimized
+          priority
+        />
       <Card className="backdrop-blur-sm bg-white/5 border-white/10 text-center">
         <CardContent className="p-4">
           <h3 className="text-2xl font-bold">{deviceInfo.name}</h3>

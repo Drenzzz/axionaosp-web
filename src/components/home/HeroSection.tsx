@@ -2,6 +2,7 @@
 
 import { Button } from "../ui/button";
 import Link from "next/link";
+import Image from "next/image";
 
 export function HeroSection() {
   const animatedWords = ["better.", "faster.", "powerful.", "reliable.", "axion."];
@@ -39,7 +40,14 @@ export function HeroSection() {
             </Link>
           </div>
           <div className="hidden md:flex md:w-auto justify-center">
-            <img src="/img/home.png" alt="AxionOS Home Screen" className="max-h-[600px] w-auto" />
+          <Image
+              src="/img/home.png"
+              alt="AxionOS Home Screen"
+              width={300}
+              height={600}
+              className="object-contain"
+              style={{ maxHeight: '600px', width: 'auto' }}
+            />          
           </div>
         </div>
       </div>

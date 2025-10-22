@@ -2,6 +2,7 @@
 
 import { Button } from "../ui/button";
 import Link from "next/link";
+import Image from "next/image";
 
 export function PerformanceSection() {
   return (
@@ -26,7 +27,14 @@ export function PerformanceSection() {
         </div>
 
         <div className="px-24 flex justify-center">
-          <img src="/img/screenshot10.png" alt="AxionOS speed and optimization" className="max-h-[500px] w-auto rounded-3xl shadow-xl" />
+          <Image
+            src="/img/screenshot10.png"
+            alt="AxionOS speed and optimization"
+            width={250}
+            height={500}
+            className="rounded-3xl shadow-xl object-contain"
+            style={{ maxHeight: '500px', width: 'auto' }}
+          />
         </div>
       </div>
     </section>

@@ -5,6 +5,7 @@ import useEmblaCarousel from 'embla-carousel-react';
 import type { EmblaOptionsType } from 'embla-carousel';
 import Autoplay from 'embla-carousel-autoplay';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
+import Image from 'next/image';
 
 const screenshotFiles = [
   'screenshot1.png', 'screenshot10.png', 'screenshot2.png', 'screenshot3.png',
@@ -50,11 +51,12 @@ export function ScreenshotCarousel() {
         <div className="embla__container">
           {screenshotFiles.map((fileName, index) => (
             <div className="embla__slide" key={index}>
-              <img 
-                src={`/img/${fileName}`} 
+              <Image
+                src={`/img/${fileName}`}
                 alt={`AxionOS Screenshot ${index + 1}`}
+                width={270}
+                height={585}
                 className="w-full h-auto object-contain rounded-2xl shadow-2xl shadow-black/50"
-                onError={(e) => { e.currentTarget.src = '/img/fallback.png'; }}
               />
             </div>
           ))}

@@ -8,6 +8,7 @@ import { ChangelogModal } from "./ChangelogModal";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import Image from "next/image";
 
 const queryClient = new QueryClient();
 
@@ -29,7 +30,13 @@ export function Navbar() {
         <div className="container mx-auto px-4 md:px-8 lg:px-12 xl:px-24">
           <div className="mt-5 bg-neutral-800/80 backdrop-blur-sm rounded-2xl flex justify-between items-center p-3 border border-neutral-700/80">
             <Link href="/" className="flex items-center gap-2 group">
-              <img src="/img/axionaosp.png" alt="AxionOS Logo" className="h-12 w-auto transition-transform duration-300 group-hover:rotate-[20deg]" />
+              <Image
+                src="/img/axionaosp.png"
+                alt="AxionOS Logo"
+                width={48}
+                height={48}
+                className="w-auto transition-transform duration-300 group-hover:rotate-[20deg]"
+              />
               <span className="text-xl font-medium text-green-300 logo-font">AxionOS</span>
             </Link>
 

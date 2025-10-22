@@ -2,6 +2,7 @@
 
 import { Github } from "lucide-react";
 import { Card } from "@/components/ui/card";
+import Image from "next/image";
 
 export const TeamMemberCard = ({ username, name, avatar, position }: { username: string, name: string, avatar: string, position: React.ReactNode }) => (
   <div className="group w-full h-full">
@@ -13,11 +14,13 @@ export const TeamMemberCard = ({ username, name, avatar, position }: { username:
       <div className="relative mb-4 z-10">
         <div className="absolute inset-0 rounded-full bg-gradient-to-br from-green-400/40 to-blue-400/40 blur-xl opacity-0 group-hover:opacity-100 transition-all duration-500 scale-110"></div>
         <div className="relative">
-          <img 
-            src={avatar} 
-            alt={username} 
-            className="w-20 h-20 rounded-full border-2 border-neutral-700 group-hover:border-green-400/60 object-cover transition-all duration-500 relative z-10" 
-            onError={(e) => { e.currentTarget.src = '/img/fallback.png'; }}
+          <Image
+            src={avatar}
+            alt={username}
+            width={80}
+            height={80}
+            className="rounded-full border-2 border-neutral-700 group-hover:border-green-400/60 object-cover transition-all duration-500 relative z-10" // Hapus w-20 h-20
+            unoptimized
           />
         </div>
       </div>
