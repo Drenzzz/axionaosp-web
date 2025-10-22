@@ -37,14 +37,16 @@ const cardVariants = {
 export function FeaturesSection() {
   return (
     <section id="features" className="py-20 md:py-28 overflow-hidden bg-neutral-900/50">
-      <div className="container mx-auto px-24 text-center">
-        <h2 className="text-4xl md:text-5xl font-bold tracking-tighter mb-4">Thoughtfully Curated Features</h2>
+      <div className="w-full max-w-7xl mx-auto px-4 sm:px-8 md:px-16 lg:px-24 text-center">
+        <h2 className="text-4xl md:text-5xl font-bold tracking-tighter mb-4">Thoughtfully Curated <span className="text-green-300">Features</span></h2>
         <p className="text-lg text-neutral-400 max-w-2xl mx-auto mb-12">Discover essential features designed for efficiency and a clean user experience—just what you need.</p>
 
-        <motion.div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mx-auto mb-12" initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} transition={{ staggerChildren: 0.1 }}>
+        <motion.div
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-12"
+            initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} transition={{ staggerChildren: 0.1 }}>
           {highlightedFeatures.map((feature, index) => (
             <motion.div key={index} variants={cardVariants} className="h-full">
-              <Card className="card-glow-effect bg-neutral-800/60 border border-neutral-700/80 text-left h-full p-6">
+              <Card className="card-glow-effect bg-neutral-800/60 border border-neutral-700/80 text-left h-full p-4 sm:p-6">
                 <CardHeader className="p-0 mb-4">
                   <feature.icon className="w-8 h-8 text-green-400 mb-3" />
                   <CardTitle className="text-lg text-white">{feature.title}</CardTitle>

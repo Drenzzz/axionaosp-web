@@ -37,20 +37,22 @@ const cardVariants: Variants = {
 export function CommunitySection() {
   return (
     <section id="community" className="py-20 overflow-hidden">
-      <div className="container mx-auto px-24 text-center">
+      <div className="w-full max-w-7xl mx-auto px-4 sm:px-8 md:px-16 lg:px-24 text-center">
         <h2 className="text-4xl font-bold text-green-300 mb-4">Make your android better.</h2>
         <p className="text-neutral-300 mb-12 max-w-2xl mx-auto">Join everyone who has downloaded AxionOS. Join the performance revolution.</p>
 
-        <motion.div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12" variants={containerVariants} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }}>
+        <motion.div
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-12"
+            variants={containerVariants} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }}>
           {testimonials.map((item, index) => (
             <motion.div key={index} variants={cardVariants} className="h-full">
-              <Card className="card-glow-effect bg-neutral-800/50 backdrop-blur-sm border-neutral-700/80 text-left h-full flex flex-col">
-                <CardContent className="pt-8 text-neutral-300 flex-grow relative">
-                  <Quote className="absolute top-4 right-4 w-10 h-10 text-neutral-700/50" />
-                  <p className="relative z-10">&quot;{item.text}&quot;</p>
+              <Card className="card-glow-effect bg-neutral-800/50 backdrop-blur-sm border-neutral-700/80 text-left h-full flex flex-col p-4 sm:p-0">
+                <CardContent className="pt-6 sm:pt-8 px-4 sm:px-6 text-neutral-300 flex-grow relative">
+                  <Quote className="absolute top-4 right-4 w-8 h-8 sm:w-10 sm:h-10 text-neutral-700/50" />
+                  <p className="relative z-10 text-sm sm:text-base">&quot;{item.text}&quot;</p>
                 </CardContent>
-                <CardFooter>
-                  <p className="w-full text-right text-neutral-400 font-bold">{item.author}</p>
+                <CardFooter className="px-4 sm:px-6 pb-4 sm:pb-6">
+                  <p className="w-full text-right text-neutral-400 font-bold text-sm sm:text-base">{item.author}</p>
                 </CardFooter>
               </Card>
             </motion.div>
