@@ -1,15 +1,15 @@
 "use client";
 
-import { useQuery } from '@tanstack/react-query';
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
-import { Skeleton } from './ui/skeleton';
-import { marked } from 'marked';
-import type { Dispatch, SetStateAction } from 'react';
+import { useQuery } from "@tanstack/react-query";
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { Skeleton } from "./ui/skeleton";
+import { marked } from "marked";
+import type { Dispatch, SetStateAction } from "react";
 
 const fetchChangelog = async (): Promise<string> => {
-  const res = await fetch('/api/changelog');
+  const res = await fetch("/api/changelog");
   if (!res.ok) {
-    throw new Error('Failed to fetch changelog');
+    throw new Error("Failed to fetch changelog");
   }
   const data = await res.json();
   return data.content;
@@ -21,14 +21,18 @@ interface ChangelogModalProps {
 }
 
 export function ChangelogModal({ isOpen, setIsOpen }: ChangelogModalProps) {
-  const { data: markdownContent, isLoading, isError } = useQuery({
-    queryKey: ['changelog'],
+  const {
+    data: markdownContent,
+    isLoading,
+    isError,
+  } = useQuery({
+    queryKey: ["changelog"],
     queryFn: fetchChangelog,
     enabled: isOpen,
     staleTime: 1000 * 60 * 5,
   });
 
-  const htmlContent = markdownContent ? marked.parse(markdownContent) : '';
+  const htmlContent = markdownContent ? marked.parse(markdownContent) : "";
 
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
@@ -36,14 +40,10 @@ export function ChangelogModal({ isOpen, setIsOpen }: ChangelogModalProps) {
         <DialogHeader>
           <DialogTitle className="text-green-300 text-2xl">Changelog</DialogTitle>
         </DialogHeader>
-        <div 
-          className="prose prose-invert max-w-none prose-sm overflow-y-auto pr-4 -mr-6 text-neutral-300 custom-scrollbar flex-1 py-4 prose-axion"
-        >
+        <div className="prose prose-invert max-w-none prose-sm overflow-y-auto pr-4 -mr-6 text-neutral-300 custom-scrollbar flex-1 py-4 prose-axion">
           {isLoading && <Skeleton className="h-full w-full bg-neutral-800" />}
           {isError && <p className="text-red-500">Failed to load changelog.</p>}
-          {htmlContent && (
-            <div dangerouslySetInnerHTML={{ __html: htmlContent }} />
-          )}
+          {htmlContent && <div dangerouslySetInnerHTML={{ __html: htmlContent }} />}
         </div>
       </DialogContent>
     </Dialog>

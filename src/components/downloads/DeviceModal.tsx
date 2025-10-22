@@ -1,13 +1,13 @@
 "use client";
 
-import { useEffect, useState } from 'react';
-import { useQuery } from '@tanstack/react-query';
-import { Button } from './ui/button';
-import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
-import { Skeleton } from './ui/skeleton';
-import { Download, HardDrive, Calendar, FileCode, Users, FileText } from 'lucide-react';
+import { useEffect, useState } from "react";
+import { useQuery } from "@tanstack/react-query";
+import { Button } from "../ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
+import { Skeleton } from "../ui/skeleton";
+import { Download, HardDrive, Calendar, FileCode, Users, FileText } from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from './ui/accordion';
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "../ui/accordion";
 
 interface Build {
   version: string;
@@ -31,15 +31,15 @@ interface DeviceInfo {
 
 const fetchDeviceDetails = async (codename: string, supportGroup: string): Promise<DeviceDetails> => {
   const res = await fetch(`/api/devices/${codename}?support_group=${encodeURIComponent(supportGroup)}`);
-  if (!res.ok) throw new Error('Failed to fetch device details');
+  if (!res.ok) throw new Error("Failed to fetch device details");
   return res.json();
 };
 
-const BuildCard = ({ type, build }: { type: 'GMS' | 'Vanilla', build: Build | null }) => {
+const BuildCard = ({ type, build }: { type: "GMS" | "Vanilla"; build: Build | null }) => {
   if (!build) return <p>No {type} build available.</p>;
 
   const sizeMB = (build.size / 1024 / 1024).toFixed(1);
-  const buildDate = new Date(build.datetime * 1000).toLocaleDateString('en-CA');
+  const buildDate = new Date(build.datetime * 1000).toLocaleDateString("en-CA");
 
   return (
     <Card className="bg-white/5 border-white/10">
@@ -47,9 +47,15 @@ const BuildCard = ({ type, build }: { type: 'GMS' | 'Vanilla', build: Build | nu
         <CardTitle className="text-lg">{type} Build</CardTitle>
       </CardHeader>
       <CardContent className="text-sm text-neutral-300 space-y-2">
-        <p className="flex items-center"><HardDrive className="mr-2 h-4 w-4 text-green-400" /> Version: {build.version}</p>
-        <p className="flex items-center"><Calendar className="mr-2 h-4 w-4 text-green-400" /> Build Date: {buildDate}</p>
-        <p className="flex items-center break-all"><FileCode className="mr-2 h-4 w-4 text-green-400 flex-shrink-0" /> {build.filename}</p>
+        <p className="flex items-center">
+          <HardDrive className="mr-2 h-4 w-4 text-green-400" /> Version: {build.version}
+        </p>
+        <p className="flex items-center">
+          <Calendar className="mr-2 h-4 w-4 text-green-400" /> Build Date: {buildDate}
+        </p>
+        <p className="flex items-center break-all">
+          <FileCode className="mr-2 h-4 w-4 text-green-400 flex-shrink-0" /> {build.filename}
+        </p>
         <a href={build.url} target="_blank" rel="noopener noreferrer" className="pt-2 block">
           <Button className="w-full bg-green-300 text-black hover:bg-green-400">
             <Download className="mr-2 h-4 w-4" /> Download ({sizeMB} MB)
@@ -58,21 +64,21 @@ const BuildCard = ({ type, build }: { type: 'GMS' | 'Vanilla', build: Build | nu
       </CardContent>
     </Card>
   );
-}
+};
 
-export function DeviceModalContent({ deviceInfo, supportGroup }: { deviceInfo: DeviceInfo, supportGroup: string }) {
-  const [activeTab, setActiveTab] = useState<'gms' | 'vanilla' | undefined>(undefined);
+export function DeviceModalContent({ deviceInfo, supportGroup }: { deviceInfo: DeviceInfo; supportGroup: string }) {
+  const [activeTab, setActiveTab] = useState<"gms" | "vanilla" | undefined>(undefined);
 
   const { data, isLoading, isError } = useQuery({
-    queryKey: ['deviceDetails', deviceInfo.codename],
+    queryKey: ["deviceDetails", deviceInfo.codename],
     queryFn: () => fetchDeviceDetails(deviceInfo.codename, supportGroup),
     enabled: !!deviceInfo.codename,
   });
 
   useEffect(() => {
     if (data) {
-      if (data.gms) setActiveTab('gms');
-      else if (data.vanilla) setActiveTab('vanilla');
+      if (data.gms) setActiveTab("gms");
+      else if (data.vanilla) setActiveTab("vanilla");
       else setActiveTab(undefined);
     }
   }, [data]);
@@ -88,41 +94,51 @@ export function DeviceModalContent({ deviceInfo, supportGroup }: { deviceInfo: D
 
   return (
     <div className="space-y-6 max-h-[85vh] overflow-y-auto custom-scrollbar p-1 pr-4">
-      <img src={deviceInfo.imageUrl} alt={deviceInfo.name} className="mx-auto h-56 w-auto object-contain"/>
+      <img src={deviceInfo.imageUrl} alt={deviceInfo.name} className="mx-auto h-56 w-auto object-contain" />
 
       <Card className="backdrop-blur-sm bg-white/5 border-white/10 text-center">
         <CardContent className="p-4">
           <h3 className="text-2xl font-bold">{deviceInfo.name}</h3>
           <p className="font-mono text-neutral-400">{deviceInfo.codename}</p>
-          <p className="text-sm text-neutral-300 mt-1">Maintained by <span className="text-green-300">{deviceInfo.maintainer}</span></p>
+          <p className="text-sm text-neutral-300 mt-1">
+            Maintained by <span className="text-green-300">{deviceInfo.maintainer}</span>
+          </p>
         </CardContent>
       </Card>
 
       {availableBuilds > 0 ? (
-        <Tabs value={activeTab} onValueChange={(value) => setActiveTab(value as 'gms' | 'vanilla')} className="w-full">
-          <TabsList className={`grid w-full ${availableBuilds === 1 ? 'grid-cols-1' : 'grid-cols-2'}`}>
+        <Tabs value={activeTab} onValueChange={(value) => setActiveTab(value as "gms" | "vanilla")} className="w-full">
+          <TabsList className={`grid w-full ${availableBuilds === 1 ? "grid-cols-1" : "grid-cols-2"}`}>
             {data?.gms && <TabsTrigger value="gms">GApps</TabsTrigger>}
             {data?.vanilla && <TabsTrigger value="vanilla">Vanilla</TabsTrigger>}
           </TabsList>
-          {data?.gms && <TabsContent value="gms" className="mt-4"><BuildCard type="GMS" build={data.gms} /></TabsContent>}
-          {data?.vanilla && <TabsContent value="vanilla" className="mt-4"><BuildCard type="Vanilla" build={data.vanilla} /></TabsContent>}
+          {data?.gms && (
+            <TabsContent value="gms" className="mt-4">
+              <BuildCard type="GMS" build={data.gms} />
+            </TabsContent>
+          )}
+          {data?.vanilla && (
+            <TabsContent value="vanilla" className="mt-4">
+              <BuildCard type="Vanilla" build={data.vanilla} />
+            </TabsContent>
+          )}
         </Tabs>
-      ) : <p className="text-center text-neutral-400 py-8">No official builds found for this device yet.</p>}
+      ) : (
+        <p className="text-center text-neutral-400 py-8">No official builds found for this device yet.</p>
+      )}
 
       {data?.changelog && (
         <Accordion type="single" collapsible className="backdrop-blur-sm w-full bg-white/5 border border-white/10 rounded-lg px-4">
-            <AccordionItem value="item-1" className="border-b-0">
+          <AccordionItem value="item-1" className="border-b-0">
             <AccordionTrigger className="hover:no-underline py-3 text-base">
-                <div className="flex items-center">
+              <div className="flex items-center">
                 <FileText className="mr-2 h-4 w-4" /> Device Changelog
-                </div>
+              </div>
             </AccordionTrigger>
             <AccordionContent>
-                <pre className="text-xs text-neutral-300 whitespace-pre-wrap font-sans max-h-48 overflow-y-auto custom-scrollbar pr-2">
-                {data.changelog}
-                </pre>
+              <pre className="text-xs text-neutral-300 whitespace-pre-wrap font-sans max-h-48 overflow-y-auto custom-scrollbar pr-2">{data.changelog}</pre>
             </AccordionContent>
-            </AccordionItem>
+          </AccordionItem>
         </Accordion>
       )}
 

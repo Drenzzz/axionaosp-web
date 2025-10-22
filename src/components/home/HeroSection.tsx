@@ -1,6 +1,6 @@
 "use client";
 
-import { Button } from "./ui/button";
+import { Button } from "../ui/button";
 import Link from "next/link";
 
 export function HeroSection() {
@@ -31,10 +31,7 @@ export function HeroSection() {
                 </div>
               </div>
             </h1>
-            <p className="max-w-md mx-auto md:mx-0 mt-6 text-lg md:text-xl text-neutral-300">
-              AxionOS is the alternative to manufacturer android skins
-              designed to make your device faster, more powerful and reliable.
-            </p>
+            <p className="max-w-md mx-auto md:mx-0 mt-6 text-lg md:text-xl text-neutral-300">AxionOS is the alternative to manufacturer android skins designed to make your device faster, more powerful and reliable.</p>
             <Link href="/downloads">
               <Button size="lg" className="mt-8 bg-green-300 hover:bg-green-400 text-black font-bold text-lg px-8 py-6 rounded-full button-glow-effect">
                 Download AxionOS
@@ -42,12 +39,7 @@ export function HeroSection() {
             </Link>
           </div>
           <div className="hidden md:flex md:w-auto justify-center">
-
-            <img 
-              src="/img/home.png" 
-              alt="AxionOS Home Screen" 
-              className="max-h-[600px] w-auto" 
-            />
+            <img src="/img/home.png" alt="AxionOS Home Screen" className="max-h-[600px] w-auto" />
           </div>
         </div>
       </div>

@@ -3,7 +3,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { useMemo } from "react";
 import { DeviceCard } from "./DeviceCard";
-import { Skeleton } from "./ui/skeleton";
+import { Skeleton } from "../ui/skeleton";
 import { motion } from "framer-motion";
 
 interface Device {
@@ -32,7 +32,7 @@ const getDeviceBrand = (deviceName: string): string => {
   if (lowerCaseName.includes("realme")) return "Realme";
   if (lowerCaseName.includes("moto")) return "Motorola";
   return "Other";
-}
+};
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -53,22 +53,24 @@ interface DeviceGridProps {
 }
 
 export function DeviceGrid({ activeFilter, searchQuery }: DeviceGridProps) {
-  const { data: devices, isLoading, isError } = useQuery({
+  const {
+    data: devices,
+    isLoading,
+    isError,
+  } = useQuery({
     queryKey: ["devices"],
     queryFn: fetchDevices,
   });
 
   const filteredDevices = useMemo(() => {
     if (!devices) return [];
-    
-    return devices.filter(device => {
+
+    return devices.filter((device) => {
       const brand = getDeviceBrand(device.device_name);
       const searchLower = searchQuery.toLowerCase();
 
-      const matchesFilter = activeFilter === 'All' || brand === activeFilter;
-      const matchesSearch = 
-        device.device_name.toLowerCase().includes(searchLower) ||
-        device.codename.toLowerCase().includes(searchLower);
+      const matchesFilter = activeFilter === "All" || brand === activeFilter;
+      const matchesSearch = device.device_name.toLowerCase().includes(searchLower) || device.codename.toLowerCase().includes(searchLower);
 
       return matchesFilter && matchesSearch;
     });
@@ -89,22 +91,11 @@ export function DeviceGrid({ activeFilter, searchQuery }: DeviceGridProps) {
   }
 
   return (
-    <motion.div
-      variants={containerVariants}
-      initial="hidden"
-      animate="visible"
-      className="backdrop-blur-sm grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto"
-    >
+    <motion.div variants={containerVariants} initial="hidden" animate="visible" className="backdrop-blur-sm grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
       {filteredDevices.length > 0 ? (
         filteredDevices.map((device) => (
           <motion.div key={device.codename} variants={itemVariants} className="h-full">
-            <DeviceCard
-              deviceName={device.device_name}
-              codename={device.codename}
-              maintainer={device.maintainer}
-              imageUrl={device.image_url}
-              github_username={device.github_username}
-            />
+            <DeviceCard deviceName={device.device_name} codename={device.codename} maintainer={device.maintainer} imageUrl={device.image_url} github_username={device.github_username} />
           </motion.div>
         ))
       ) : (

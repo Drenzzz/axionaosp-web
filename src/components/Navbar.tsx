@@ -1,21 +1,21 @@
 "use client";
 
-import { useState } from 'react';
-import { Button } from '@/components/ui/button';
-import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
-import { Menu } from 'lucide-react';
-import { ChangelogModal } from './ChangelogModal';
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { Menu } from "lucide-react";
+import { ChangelogModal } from "./ChangelogModal";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 const queryClient = new QueryClient();
 
 const navLinks = [
-  { href: '/blog', label: 'Blog' },
-  { href: '/features', label: 'Features' },
-  { href: '/about', label: 'About' },
-  { href: '/apply', label: 'Maintainership' },
+  { href: "/blog", label: "Blog" },
+  { href: "/features", label: "Features" },
+  { href: "/about", label: "About" },
+  { href: "/apply", label: "Maintainership" },
 ];
 
 export function Navbar() {
@@ -36,13 +36,7 @@ export function Navbar() {
             <div className="hidden md:flex items-center gap-2">
               <nav className="flex items-center gap-2">
                 {navLinks.map((link) => (
-                  <Link
-                    key={link.href}
-                    href={link.href}
-                    className={`nav-link-effect text-sm ${
-                      pathname === link.href ? 'text-white font-semibold' : 'text-neutral-300 hover:text-white'
-                    }`}
-                  >
+                  <Link key={link.href} href={link.href} className={`nav-link-effect text-sm ${pathname === link.href ? "text-white font-semibold" : "text-neutral-300 hover:text-white"}`}>
                     {link.label}
                   </Link>
                 ))}
@@ -51,9 +45,7 @@ export function Navbar() {
                 </button>
               </nav>
               <Link href="/downloads">
-                <Button className="bg-green-300 hover:bg-green-400 text-black font-semibold button-glow-effect">
-                  Downloads
-                </Button>
+                <Button className="bg-green-300 hover:bg-green-400 text-black font-semibold button-glow-effect">Downloads</Button>
               </Link>
             </div>
 
@@ -68,14 +60,7 @@ export function Navbar() {
                   <div className="flex flex-col items-center justify-center h-full text-center">
                     <nav className="flex flex-col gap-6 text-2xl font-medium">
                       {navLinks.map((link) => (
-                        <Link
-                          key={link.href}
-                          href={link.href}
-                          onClick={() => setIsMobileMenuOpen(false)}
-                           className={`nav-link-effect ${
-                            pathname === link.href ? 'text-white font-semibold' : 'text-neutral-300 hover:text-white'
-                          }`}
-                        >
+                        <Link key={link.href} href={link.href} onClick={() => setIsMobileMenuOpen(false)} className={`nav-link-effect ${pathname === link.href ? "text-white font-semibold" : "text-neutral-300 hover:text-white"}`}>
                           {link.label}
                         </Link>
                       ))}
@@ -90,18 +75,13 @@ export function Navbar() {
                       </button>
                     </nav>
 
-                    <Link
-                      href="/downloads"
-                      onClick={() => setIsMobileMenuOpen(false)}
-                      className="mt-12 block bg-green-400/20 border border-green-400/50 text-green-300 font-semibold px-10 py-4 rounded-xl text-lg button-glow-effect"
-                    >
+                    <Link href="/downloads" onClick={() => setIsMobileMenuOpen(false)} className="mt-12 block bg-green-400/20 border border-green-400/50 text-green-300 font-semibold px-10 py-4 rounded-xl text-lg button-glow-effect">
                       Downloads
                     </Link>
                   </div>
                 </SheetContent>
               </Sheet>
             </div>
-            
           </div>
         </div>
       </header>
