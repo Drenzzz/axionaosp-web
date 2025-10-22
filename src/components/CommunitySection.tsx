@@ -37,7 +37,7 @@ const cardVariants: Variants = {
 export function CommunitySection() {
   return (
     <section id="community" className="py-20 overflow-hidden">
-      <div className="container mx-auto px-4 text-center">
+      <div className="container mx-auto px-24 text-center">
         <h2 className="text-4xl font-bold text-green-300 mb-4">Make your android better.</h2>
         <p className="text-neutral-300 mb-12 max-w-2xl mx-auto">Join everyone who has downloaded AxionOS. Join the performance revolution.</p>
         

@@ -12,7 +12,7 @@ export function HeroSection() {
       </video>
       <div className="absolute top-0 left-0 w-full h-full bg-black/30 z-0"></div>
       <div className="absolute bottom-0 left-0 w-full h-1/3 z-[5] bg-gradient-to-t from-neutral-900 to-transparent" />
-      <div className="relative z-10 container mx-auto px-12">
+      <div className="relative z-10 container mx-auto px-24">
         <div className="flex flex-col md:flex-row items-center justify-between gap-8">
           <div className="md:w-1/2 text-center md:text-left">
             <h1 className="text-5xl md:text-7xl font-bold tracking-tighter">

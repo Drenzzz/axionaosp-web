@@ -1,26 +1,25 @@
-// src/components/HomePage.tsx
 "use client";
 
 import { HeroSection } from "./HeroSection";
-import { CommunitySection } from "./CommunitySection";
-import { FaqSection } from "./FaqSection";
-import { SecondLifeSection } from "./SecondLifeSection";
-import { SpeedSection } from "./SpeedSection";
-import { GamingSection } from "./GamingSection";
+import { WhyAxionOSSection } from "./WhyAxionOSSection";
+import { PerformanceSection } from "./PerformanceSection";
 import { FamiliarUISection } from "./FamiliarUISection";
 import { FeaturesSection } from "./FeaturesSection";
-import { MaintainerSection } from './MaintainerSection'; 
+import { GamingSection } from "./GamingSection";
+import { CommunitySection } from "./CommunitySection";
+import { FaqSection } from "./FaqSection";
 import { ScrollAnimation } from "./ScrollAnimation";
 
 export function HomePage() {
   return (
     <>
       <HeroSection />
+
       <ScrollAnimation>
-        <SecondLifeSection />
+        <WhyAxionOSSection />
       </ScrollAnimation>
       <ScrollAnimation>
-        <SpeedSection />
+        <PerformanceSection />
       </ScrollAnimation>
       <ScrollAnimation>
         <FamiliarUISection />
@@ -30,9 +29,6 @@ export function HomePage() {
       </ScrollAnimation>
       <ScrollAnimation>
         <GamingSection />
-      </ScrollAnimation>
-      <ScrollAnimation>
-        <MaintainerSection />
       </ScrollAnimation>
       <ScrollAnimation>
         <CommunitySection />
