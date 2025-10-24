@@ -145,7 +145,7 @@ export default async function AboutPage() {
           )}
 
           {maintainers.length > 0 && (
-            <Section title="Device Maintainers">
+            <Section title="Maintainers">
               <div className="flex flex-wrap justify-center gap-6">
                 {maintainers.map((m) => (
                   <div key={m.username} className="w-full sm:w-64 md:w-72">
