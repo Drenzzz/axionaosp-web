@@ -50,7 +50,7 @@ export function Footer() {
         <div className="text-neutral-500 text-sm space-y-2">
           <p>&copy; {new Date().getFullYear()} AxionOS. All Rights Reserved.</p>
           <p>
-            Designed by <a href="https://github.com/rmp22" target="_blank" rel="noopener noreferrer" className="text-green-400 hover:underline font-semibold">rmp22</a> and <a href="https://github.com/drenzzz" target="_blank" rel="noopener noreferrer" className="text-green-400 hover:underline font-semibold">Drenzzz</a>
+            Designed by <a href="https://github.com/rmp22" target="_blank" rel="noopener noreferrer" className="text-green-400 hover:underline font-semibold">rmp22</a> and <a href="https://github.com/drenzzz" target="_blank" rel="noopener noreferrer" className="text-green-400 hover:underline font-semibold">Drenzzz</a> using <a href="https://nextjs.org/" target="_blank" rel="noopener noreferrer" className="text-green-400 hover:underline font-semibold">Next.js</a>
           </p>
         </div>
 
